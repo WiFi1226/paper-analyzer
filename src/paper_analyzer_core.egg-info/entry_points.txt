@@ -1,0 +1,7 @@
+[console_scripts]
+paper-assemble = paper_analyzer.cli.assemble:main
+paper-extract = paper_analyzer.cli.extract:main
+paper-invoke = paper_analyzer.cli.invoke:main
+paper-route = paper_analyzer.cli.route:main
+paper-save-output = paper_analyzer.cli.save_output:main
+paper-split = paper_analyzer.cli.split:main
