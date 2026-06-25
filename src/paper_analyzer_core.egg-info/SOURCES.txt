@@ -14,6 +14,7 @@ src/paper_analyzer/cli/__init__.py
 src/paper_analyzer/cli/assemble.py
 src/paper_analyzer/cli/extract.py
 src/paper_analyzer/cli/invoke.py
+src/paper_analyzer/cli/orchestrate.py
 src/paper_analyzer/cli/route.py
 src/paper_analyzer/cli/save_output.py
 src/paper_analyzer/cli/split.py
@@ -32,7 +33,3 @@ src/paper_analyzer_core.egg-info/dependency_links.txt
 src/paper_analyzer_core.egg-info/entry_points.txt
 src/paper_analyzer_core.egg-info/requires.txt
 src/paper_analyzer_core.egg-info/top_level.txt
-tests/test_prompts.py
-tests/test_report.py
-tests/test_route.py
-tests/test_split.py

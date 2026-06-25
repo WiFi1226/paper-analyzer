@@ -188,11 +188,8 @@ def _expand_continuation_lines(
             if not cont_match:
                 break
             cont_text = cont_match.group(1).strip()
-            # 续行本身以数字/Roman编号开头 → 新标题，不合并
+            # 如果续行本身以数字/Roman编号开头，说明是新标题，不合并
             if re.match(r"^(([1-9]\d{0,2})|[IVX]+)\.\s+", cont_text):
-                break
-            # 续行文本超过最大长度 → 段落首行，不是标题续行
-            if len(cont_text) > _CONTINUATION_MAX_CHARS:
                 break
 
             lines_collected.append(cont_text)

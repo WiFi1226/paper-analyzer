@@ -103,7 +103,7 @@ def _load_rules(rules_dir: Path | None = None, config: Config | None = None) -> 
 
 def _run(args: argparse.Namespace, config: Config) -> None:
     # ══════════════════════════════════════════════════════════
-    # 阶段 1：加载
+    # 阶段 1：加载 —— 读取文件、建立缓存、计算指纹
     # ══════════════════════════════════════════════════════════
     sections_path = Path(args.sections_json)
     if not sections_path.exists():
@@ -114,6 +114,8 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     if not routing_path.exists():
         logger.error("错误：routing JSON 不存在 —— %s", routing_path)
         sys.exit(1)
+
+    max_chars = get_max_prompt_chars(config)
 
     with open(sections_path, encoding="utf-8") as f:
         sections = json.load(f)
@@ -126,8 +128,15 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     paper_name = raw_data.get("paper_name", "") or sections_path.parent.parent.stem
     matches = routing.get("matches", [])
 
+    cache_dir = Path(args.cache_dir) if (args.cache_dir and args.cache_dir is not True) else None
+    if cache_dir is None and paper_name:
+        cache_dir = config.cache_dir(paper_name)
+    cache = _PromptCache(cache_dir) if cache_dir else None
+
     rules_dir = Path(args.rules_dir) if args.rules_dir else None
     rules, missing_rules = _load_rules(rules_dir, config)
+    rules_hash = compute_rules_hash(rules)
+    sections_hash = compute_sections_hash(sections)
     warnings: list[str] = list(missing_rules)
     if rules:
         logger.info("[规则] 读取:  %s 字符", len(rules))
@@ -147,30 +156,81 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     )
 
     custom_footer = load_settings(config).get("prompt_footer")
+    loaded_meta = cache.load_meta() if cache else None
+    existing_agent_entries = loaded_meta.get("agent_entries", []) if loaded_meta else []
 
     # ══════════════════════════════════════════════════════════
-    # 阶段 2：处理
+    # 阶段 2：处理 —— 每个 agent 查缓存或生成新 prompt
     # ══════════════════════════════════════════════════════════
     new_prompts: list[dict[str, Any]] = []
+    new_agent_entries: list[dict[str, Any]] = []
+    kept_files: set[str] = set()
+    cache_status: dict[str, str] = {}
 
     for agent, titles in agent_titles.items():
+        cached_entry = cache.find_cached(existing_agent_entries, agent, titles) if cache else None
+
+        if cached_entry is not None and cache is not None and cache.is_fresh(cached_entry, rules_hash, sections_hash):
+            restored = cache.restore_parts(cached_entry, max_chars)
+            if restored is not None:
+                new_prompts.extend(restored)
+                new_agent_entries.append(cached_entry)
+                kept_files.update(cache.collect_kept_files(cached_entry))
+                cache_status[agent] = "hit"
+                logger.info("[缓存] 命中:  agent=%s, %s 个章节", agent, len(titles))
+                continue
+            warnings.append(f"缓存文件缺失（agent={agent}），将重新生成该 agent 的所有 prompt")
+
+        cache_status[agent] = "miss"
         needs_cl = agent in chapter_list_agents
         content_block, footer = paper_content_formatter(
             titles, sections_lookup, rules, sections,
             needs_chapter_list=needs_cl, custom_footer=custom_footer,
         )
         agent_prompts = build_single_prompt(
-            agent, titles, rules, content_block, footer, get_max_prompt_chars(config), warnings,
+            agent, titles, rules, content_block, footer, max_chars, warnings,
         )
-        logger.info("[构建] 完成:  agent=%s, %s 条 prompt", agent, len(agent_prompts))
 
+        parts_meta: list[dict[str, Any]] = []
         for p in agent_prompts:
-            p["file_path"] = ""
+            file_path = cache.write_prompt(p) if cache else ""
+            p["file_path"] = file_path
+            read_path = p.get("__content_path__", file_path)
+            content_path = p.pop("__content_path__", None)
+            p["prompt_text"] = _truncate_if_oversized(p["prompt_text"], read_path, max_chars)
             p["total_chars"] = len(p["prompt_text"])
             new_prompts.append(p)
 
+            part_meta: dict[str, Any] = {
+                "chapter_titles": p["chapter_titles"],
+                "file_path": file_path,
+            }
+            if p.get("split_index") is not None:
+                part_meta["split_index"] = p["split_index"]
+                part_meta["split_total"] = p["split_total"]
+            parts_meta.append(part_meta)
+            if file_path:
+                kept_files.add(file_path)
+            if content_path:
+                kept_files.add(content_path)
+
+        agent_entry = {
+            "agent": agent,
+            "titles": sorted(titles),
+            "fingerprint": {"rules_sha256": rules_hash, "sections_sha256": sections_hash},
+            "parts": parts_meta,
+        }
+        new_agent_entries.append(agent_entry)
+        if cache is not None:
+            kept_files.update(cache.collect_kept_files(agent_entry))
+
+    if cache:
+        cache.write_meta(new_agent_entries, len(rules), paper_name, warnings, rules_hash, sections_hash)
+        kept_files.add(str((cache.prompts_root / "meta.json").resolve()))
+        cache.cleanup(kept_files)
+
     # ══════════════════════════════════════════════════════════
-    # 阶段 3：输出
+    # 阶段 3：输出 —— 组装结果 JSON 并写入
     # ══════════════════════════════════════════════════════════
     total_input_chars = sum(len(p["prompt_text"]) for p in new_prompts)
     result = {
@@ -179,6 +239,7 @@ def _run(args: argparse.Namespace, config: Config) -> None:
         "rules_chars": len(rules),
         "paper_name": paper_name,
         "warnings": warnings,
+        "cache": cache_status,
         "stats": {
             "total_input_chars": total_input_chars,
             "total_estimated_tokens": total_input_chars // 2,
@@ -192,7 +253,8 @@ def _run(args: argparse.Namespace, config: Config) -> None:
         write_json(Path(args.output), result)
         logger.info("已保存: %s（%s 条 prompt）", args.output, len(new_prompts))
     elif paper_name:
-        output_path = config.prompts_cache_dir(paper_name) / "prompts.json"
+        assert cache is not None
+        output_path = cache.prompts_root / "prompts.json"
         write_json(output_path, result)
         logger.info("已保存: %s（%s 条 prompt）", output_path, len(new_prompts))
     else:

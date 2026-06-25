@@ -5,16 +5,12 @@
 使用 paper_analyzer 独立包的 Config 对象管理所有路径。
 
 用法:
-    python scripts/paper_analyzer/orchestrate.py <文件路径> [--section <关键词>] [--agent <agent名>]
+    paper-orchestrate <文件路径> [--section <关键词>] [--agent <agent名>]
 
 输入路径可以是：
   - .txt 文件（已有文本）
   - .pdf 文件（自动调用 pdftotext 转换）
   - 仅文件名（自动在 output/<文件名>/cache/ 下查找对应 .txt）
-
-缓存策略：
-  - pdftotext + split：mtime 缓存
-  - route：展示旧结果 + 始终刷新匹配
 """
 
 import argparse
@@ -29,17 +25,17 @@ from paper_analyzer.adapters.config_loader import (
     load_settings, get_split_patterns, get_routing_rules,
 )
 from paper_analyzer.adapters.pdf import extract_text, ensure_pdftotext
-from paper_analyzer.cache import mtime_fresh, config_changed
+
 from paper_analyzer.core.split import (
     detect_style, find_cn_headings, find_en_headings, split_text,
 )
 from paper_analyzer.core.route import (
     filter_sections, match_chapters,
-    build_filter_description, build_match_report, summarize_matches,
+    build_filter_description, build_match_report,
 )
 from paper_analyzer.errors import PaperAnalyzerError
 
-from paper_analyzer.io import normalize_paper_name
+from paper_analyzer.io import normalize_paper_name, write_json
 
 logger = logging.getLogger(__name__)
 
@@ -62,7 +58,7 @@ def resolve_input(user_input: str, config: Config) -> tuple[Path, Path | None]:
     if input_path.suffix.lower() == ".pdf":
         if not input_path.exists():
             raise PaperAnalyzerError(f"PDF 文件不存在 —— {input_path}")
-        txt_path, _ = _convert_pdf(input_path, config)
+        txt_path = _convert_pdf(input_path, config)
         return txt_path, input_path
 
     stem = normalize_paper_name(input_path.stem)
@@ -78,7 +74,7 @@ def resolve_input(user_input: str, config: Config) -> tuple[Path, Path | None]:
         candidate = config.project_root / sp / f"{stem}.pdf"
         tried.append(candidate)
         if candidate.exists():
-            txt_path, _ = _convert_pdf(candidate, config)
+            txt_path = _convert_pdf(candidate, config)
             return txt_path, candidate
 
     raise PaperAnalyzerError(
@@ -99,11 +95,11 @@ def _find_original_pdf(txt_path: Path, config: Config) -> Path | None:
 
 
 # ══════════════════════════════════════════════════════════════════════════
-# 2. PDF 转换（策略 A：内容寻址缓存）
+# 2. PDF 转换
 # ══════════════════════════════════════════════════════════════════════════
 
-def _convert_pdf(pdf_path: Path, config: Config) -> tuple[Path, str]:
-    """PDF → TXT，基于 mtime 判断缓存。
+def _convert_pdf(pdf_path: Path, config: Config) -> Path:
+    """PDF → TXT。
 
     Raises:
         ToolNotFoundError: pdftotext 未安装
@@ -112,13 +108,9 @@ def _convert_pdf(pdf_path: Path, config: Config) -> tuple[Path, str]:
     paper_name = normalize_paper_name(pdf_path.stem)
     txt_path = config.txt_path(paper_name)
 
-    if txt_path.exists() and txt_path.stat().st_mtime >= pdf_path.stat().st_mtime:
-        logger.info("[缓存] 文本缓存新鲜，跳过提取: %s", txt_path)
-        return txt_path, "hit"
-
     ensure_pdftotext()
 
-    logger.info("[PDF] 检测到 PDF，正在提取文本: %s", pdf_path.name)
+    logger.info("[PDF] 检测: %s", pdf_path.name)
     text = extract_text(pdf_path)
 
     if not text.strip():
@@ -128,29 +120,21 @@ def _convert_pdf(pdf_path: Path, config: Config) -> tuple[Path, str]:
     txt_path.write_text(text, encoding="utf-8")
 
     lines = text.count("\n") + 1
-    logger.info("[完成] 文本提取完成 → %s（%s 行，%s 字符）", txt_path, f"{lines:,}", f"{len(text):,}")
-    return txt_path, "miss"
+    logger.info("[PDF] 提取: → %s（%s 行，%s 字符）", txt_path, f"{lines:,}", f"{len(text):,}")
+    return txt_path
 
 
 # ══════════════════════════════════════════════════════════════════════════
-# 3. 切分（mtime 缓存）
+# 3. 切分
 # ══════════════════════════════════════════════════════════════════════════
 
 def run_split(
     txt_path: Path,
     config: Config,
-    pdf_path: Path | None = None,
-) -> tuple[list[dict[str, Any]], Path, str]:
-    """切分论文文本，返回 (sections, json_path, cache_status)。"""
+) -> tuple[list[dict[str, Any]], Path]:
+    """切分论文文本，返回 (sections, json_path)。"""
     paper_name = txt_path.stem
     json_path = config.sections_path(paper_name)
-    split_config_path = config.defaults_dir / "split.yaml"
-
-    if json_path.exists():
-        if mtime_fresh(json_path, txt_path) and not config_changed(split_config_path, json_path):
-            sections = json.loads(json_path.read_text(encoding="utf-8"))
-            logger.info("[缓存] sections 缓存新鲜，跳过切分: %s（%s 个章节）", json_path, len(sections))
-            return sections, json_path, "hit"
 
     patterns = get_split_patterns(config)
     text = txt_path.read_text(encoding="utf-8")
@@ -177,53 +161,23 @@ def run_split(
     else:
         sections = split_text(text, headings, patterns["min_pre_content_chars"])
 
-    json_path.parent.mkdir(parents=True, exist_ok=True)
-    json_path.write_text(
-        json.dumps(sections, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    write_json(json_path, sections)
 
-    return sections, json_path, "miss"
+    return sections, json_path
 
 
 # ══════════════════════════════════════════════════════════════════════════
-# 4. 路由匹配（策略 B：展示历史 + 始终刷新）
+# 4. 路由匹配
 # ══════════════════════════════════════════════════════════════════════════
-
-def _show_previous_routing(paper_name: str, config: Config) -> None:
-    """展示旧路由缓存摘要（仅供用户参照）。"""
-    routing_path = config.routing_auto_path(paper_name)
-    if not routing_path.exists():
-        return
-
-    try:
-        data = json.loads(routing_path.read_text(encoding="utf-8"))
-        routing = data.get("routing", data)
-        prev_matches = routing.get("matches", [])
-        prev_agents = list(dict.fromkeys(m["agent"] for m in prev_matches))
-        prev_total = routing.get("total_chapters", 0)
-        prev_unmatched = routing.get("unmatched", [])
-
-        logger.info("[历史] 上次匹配结果（仅供参照，将执行新匹配）:")
-        if prev_matches:
-            summary = summarize_matches(prev_matches, prev_agents, prev_total)
-            logger.info("   %s", summary)
-        if prev_unmatched:
-            unmatched_titles = [u["title"] for u in prev_unmatched]
-            logger.info("   上次未匹配: %s", ', '.join(unmatched_titles))
-    except (json.JSONDecodeError, OSError, KeyError):
-        pass
-
 
 def _run_routing(
     sections: list[dict[str, Any]],
     section_filters: list[str] | None,
     agent_filters: list[str] | None,
-    paper_name: str,
     config: Config,
-) -> dict[str, Any]:
-    """执行路由匹配 + 保存缓存。"""
-    _show_previous_routing(paper_name, config)
+    paper_name: str,
+) -> tuple[dict[str, Any], Path]:
+    """执行路由匹配，写入路由结果，返回 (routing, routing_path)。"""
 
     routes, aliases = get_routing_rules(config)
     has_user_filters = bool(section_filters or agent_filters)
@@ -246,17 +200,13 @@ def _run_routing(
         "matched_agents": matched_agents,
         "filter_applied": filter_desc,
         "total_chapters": len(sections),
+        "total_matches": len(matches),
         "report_markdown": report,
     }
 
-    routing_auto_path = config.routing_auto_path(paper_name)
-    routing_auto_path.parent.mkdir(parents=True, exist_ok=True)
-    routing_auto_path.write_text(
-        json.dumps(routing, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
-
-    return routing
+    routing_path = config.routing_path(paper_name)
+    write_json(routing_path, routing)
+    return routing, routing_path
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -304,37 +254,15 @@ def main() -> None:
 
 
 def _run(args: argparse.Namespace, config: Config) -> None:
+
     txt_path, pdf_path = resolve_input(args.file, config)
     paper_name = txt_path.stem
 
-    sections, sections_json_path, sections_cache = run_split(txt_path, config, pdf_path)
+    sections, sections_json_path = run_split(txt_path, config)
     logger.info("[切分] 完成: %s 个章节 → %s", len(sections), sections_json_path)
 
-    routing = _run_routing(
-        sections, args.section, args.agent, paper_name, config,
-    )
-    logger.info("[匹配] 完成: %s 条匹配", len(routing['matches']))
-
-    txt_text = txt_path.read_text(encoding="utf-8") if txt_path.exists() else ""
-    pdf_cache = "fresh" if pdf_path is None else sections_cache
-    result = {
-        "paper_name": paper_name,
-        "txt_path": str(txt_path),
-        "sections_path": str(sections_json_path),
-        "output_path": str(config.analysis_path(paper_name)),
-        "total_chapters": len(sections),
-        "cache": {
-            "pdf_to_txt": pdf_cache,
-            "sections": sections_cache,
-        },
-        "stats": {
-            "total_chars": len(txt_text),
-        },
-        "routing": routing,
-    }
-
-    print(json.dumps(result, ensure_ascii=False, indent=2))
-
+    routing, routing_json_path = _run_routing(sections, args.section, args.agent, config, paper_name)
+    logger.info("[匹配] 完成: %s 条匹配 → %s", routing['total_matches'], routing_json_path)
 
 if __name__ == "__main__":
     main()
