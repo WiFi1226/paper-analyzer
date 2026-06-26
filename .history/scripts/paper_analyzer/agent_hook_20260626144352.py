@@ -82,7 +82,11 @@ def _handle() -> None:
         config=config,
     )
 
-    print('{"decision":"allow"}')
+    summary = f"✅ Agent 输出已保存: {agent}.md（{len(output_text)} 字符）→ {output_dir}"
+    print(json.dumps({
+        "decision": "allow",
+        "tool_response": summary
+    }))
 
 
 if __name__ == "__main__":
