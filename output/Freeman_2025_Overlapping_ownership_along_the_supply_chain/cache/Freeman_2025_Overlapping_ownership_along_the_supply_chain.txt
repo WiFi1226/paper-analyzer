@@ -1,0 +1,1733 @@
+                                                                                                                https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+JOURNAL OF FINANCIAL AND QUANTITATIVE ANALYSIS                         Vol. 60, No. 1, Feb. 2025, pp. 105–134
+© The Author(s), 2023. Published by Cambridge University Press on behalf of the Michael G. Foster
+School of Business, University of Washington. This is an Open Access article, distributed under the terms
+of the Creative Commons Attribution-NonCommercial-ShareAlike licence (http://creativecommons.org/
+licenses/by-nc-sa/4.0), which permits non-commercial re-use, distribution, and reproduction in any
+medium, provided the same Creative Commons licence is used to distribute the re-used or adapted
+article and the original article is properly cited. The written permission of Cambridge University Press must
+be obtained prior to any commercial use.
+doi:10.1017/S0022109023001266
+
+
+Overlapping Ownership Along the Supply
+Chain
+
+Kayla M. Freeman
+University of Georgia, Terry College of Business
+kayla.freeman@uga.edu
+
+
+
+
+Abstract
+I find overlapping institutional ownership (OIO) in a customer and supplier increases the
+duration of their supply chain relationship. Results are stronger when vertical holdup is more
+severe. A quasi-natural experiment around mergers of financial institutions provides causal
+evidence of OIO improving relationship survival rates. Concurrent with longer-lived rela-
+tionships, valuations and innovation increase, consistent with OIO effects on relationship
+longevity being beneficial. I find evidence of OIO strengthening relationships via an inter-
+nalization channel: With more OIO, partners cooperate more, with the supplier extending
+more trade credit. Overall, results indicate OIO strengthens vertical relationships by allevi-
+ating holdup problems.
+
+
+
+I.    Introduction
+      Collaboration between trade partners can result in valuable supply chain
+synergies. However, holdup costs can prevent these synergies from ever taking
+place—each party is reluctant to invest in the relationship for fear that once
+investments are made, the other party will act opportunistically to capture all
+relationship rents. Resolving this holdup in order to facilitate cooperation between
+vertical trade partners is a classic problem. We know ownership links between the
+two firms can help align supply chain goals and strengthen the relationship: a large
+literature focuses on vertical integration and situations in which a merger with a
+trade partner is advantageous (e.g., Coase (1937), Fan and Goyal (2006), Lafon-
+taine and Slade (2007), and Garfinkel and Hankins (2011)), and Fee, Hadlock, and
+Thomas (2006) show that corporate equity stakes mitigate supply chain conflicts.
+
+   I especially thank an anonymous referee and Jarrad Harford (the editor) for their valuable feedback,
+and Matthew Billett for invaluable discussions and feedback. I am grateful to Edward Fee, Janet Gao,
+and Yixin Liu for providing the customer–supplier data used in this study. I also thank Azi Ben-Rephael,
+Ryan Brewer, Andrew Ellul, Janet Gao, Eitan Goldman, Isaac Hacamo, Charles Hadlock, Jie (Jack) He,
+Kristoph Kleiner, Jeffry Netter, Annette Poulsen, Veronika Pool, Martin Schmalz, Charles Trzcinka,
+Wenyu Wang, Jun Yang, and conference participants at the American Finance Association, Financial
+Management Association, and Eastern Financial Association, and brownbag participants at Indiana
+University for their advice and suggestions.
+
+
+                                                   105
+                                                                                           https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+106 Journal of Financial and Quantitative Analysis
+
+While these ownership links can effectively strengthen vertical relationships in
+some cases, they are likely not the best solution for many supply chain partnerships,
+even when holdup is a problem. For example, while vertical integration may be
+beneficial when a customer purchases the bulk of a supplier’s output, it likely would
+not be practicable when the customer purchases only a portion of the supplier’s
+capacity. While corporate equity stakes can be effective, they rarely occur (Fee et al.
+(2006)), and establishing equity stakes is costly, complex, and requires disclosure,
+making them expensive and fairly illiquid (Billett, Elkamhi, and Floros (2015)).
+      As an alternative to these more direct ownership mechanisms, overlapping
+institutional ownership (OIO), the extent to which supply chain partners share
+institutional investors, could alleviate vertical holdup problems if the overlapping
+owners help align supply chain goals. In this article, I find causal evidence that OIO
+strengthens supply chain ties, leading to longer, stronger relationships.
+      My empirical approach is as follows: Baseline results show that customer–
+supplier pairs with greater OIO have longer relationships as measured by
+improved survival rates, particularly when the potential for holdup problems is
+more severe. To address endogeneity between ownership overlap and vertical
+relationships, I exploit plausibly exogenous shocks to OIO arising from mergers
+of financial institutions. When an institutional blockholder of one trade partner
+merges with an institution holding a large stake in the other trade partner, creating
+a large OIO position, the two firms are more likely to continue their supply chain
+relationship.
+      Results hold in a series of robustness tests. Recent discussion in the literature
+emphasizes the need to focus on investors with overlapping stakes significant
+enough to incentivize firm managers (e.g., Harford, Jenter, and Li (2011), Gilje,
+Gormley, and Levit (2020)). In this spirit, I repeat the baseline results with OIO
+aggregated only i) across investors holding at least 1% of each firm’s shares
+outstanding, ii) across investors whose portfolios are 1% comprised by the over-
+lapping stake, or iii) across long-term investors, finding consistent results. Thus, the
+effects documented throughout the article are not simply the result of small, short-
+term investments in a customer–supplier pair, but are driven by owners with sizable
+stakes in both firms. Additionally, findings do not appear to be driven by the surge in
+passive index ownership, as results hold when I exclude “Big 3” (BlackRock,
+StateStreet, and Vanguard) ownership from my OIO measure. Results around
+institution mergers are robust to alternative control group definitions, and hold
+when I exclude financial crisis years (Lewellen and Lowry (2021)).
+      Baseline results and causal evidence from institution mergers show OIO
+strengthening supply chain relationships, leading to enhanced survival rates. These
+results are consistent with OIO alleviating costly supply chain holdup, which
+should generate greater supply chain value. An alternative explanation, however,
+could be that ownership ties prop up suboptimal relationships, causing them to
+survive longer than is economically beneficial. To shed light on which interpreta-
+tion is more likely, I show that concurrent with increasing relationship length, OIO
+is associated with higher supply chain valuations (measured by market-to-book
+ratios) and greater patenting activity. Increased innovation and valuations suggest
+an overall pattern more consistent with OIO beneficially reducing holdup problems
+and creating supply chain value than being harmful.
+                                                                                                             https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                      Freeman 107
+
+      Finally, I consider the mechanisms through which OIO affects supply chains.
+Theoretically, we would expect synergistic effects of OIO on vertical relationships
+due to the portfolio-level focus of their investors, as modeled by Hansen and Lott
+(1996). They show that maximizing the portfolio value of owners with interests in
+multiple firms may not always translate into maximizing individual firm value.1
+When firms within the overlapping owners’ portfolios can affect each other’s
+profits (as is the case between a customer and supplier) a portfolio-level focus
+helps align the incentives of the commonly-held companies. While in the absence of
+OIO a value-maximizing firm may act opportunistically in ways that harm a supply
+chain partner, OIO should cause firms to internalize the effect of their actions on
+their partners, reducing the risk of opportunistic behavior and enhancing trust.
+Thus, the clearest theoretical channel through which OIO should affect supply
+chains is one of internalization, with supply chain partners collaborating more
+effectively due to the trust engendered by their aligned incentives. I find support
+for the internalization channel by documenting increased provision of trade credit,
+evidence of greater trust between supply chain partners due to OIO.
+      Additionally, overlapping institutional owners’ influence could occur some-
+what more directly through multiple channels, including active engagement, vot-
+ing, and board representation. For example, ample recent literature shows evidence
+of direct engagement between institutional investors and their portfolio companies’
+management (see, e.g., Dimson, Karakas, and Li (2015), McCahery, Sautner, and
+Starks (2016), and Bradley, Jame, and Williams (2022)). Particularly pertinent to
+supply chain-related communications, Zhang (2022) finds evidence of manage-
+ment learning from institutional investors with supply chain information at investor
+conferences. Shareholder proposals related to supply chain sustainability are also
+common, reflecting another way institutional investors could plausibly influence
+vertical relationships.2
+      My article contributes to a growing literature intersecting corporate finance
+and supply chain issues. Prior literature has documented other mechanisms reduc-
+ing supply chain holdup: For example, Chu, Tian, and Wang (2019) show improved
+supplier innovation when the firm is geographically close to its customer, while
+Costello (2013) shows that supply contract design can alleviate holdup when firms
+are geographically distant. Dasgupta, Zhang, and Zhu (2021) find network ties
+among supply chain partners’ directors or officers help resolve holdup and induce
+more innovation. More broadly, prior studies examine supply chain issues in
+contexts such as mergers and acquisitions (Shahrur (2005), Fan and Goyal
+(2006), Garfinkel and Hankins (2011), and Ahern and Harford (2014)), accounting
+disclosure and conservatism (Ellis, Fee, and Thomas (2012), Hui, Klasa, and Yeung
+(2012)), earnings management (Raman and Shahrur (2008), Dou, Hope, and
+Thomas (2013)), capital structure and the financing costs (Kale and Shahrur
+
+    1
+      Previous articles had also noted that the interests of shareholders may not always be firm value
+maximization (Long (1972), Ekern and Wilson (1974), Merton and Subrahmanyam (1974), Radner
+(1974), Nielsen (1976), Grossman and Stiglitz (1977), and Hart (1979)).
+    2
+      See, e.g., “Unilever to Put its Climate Change Plans to a Shareholder Vote,” Reuters, Dec. 13, 2020;
+Gray, A., and P. Temple-West, “Investor Rebellion at Procter & Gamble Over Environmental Concerns,”
+Financial Times, Oct. 13, 2020; Hodges, J., and W. Matthis, “Why Company Carbon Cuts Should
+Include ‘Scope’ Check,” Bloomberg, Feb. 11, 2020.
+                                                                                                               https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+108 Journal of Financial and Quantitative Analysis
+
+(2007), Brown, Fee, and Thomas (2009), Cen, Dasgupta, Elkamhi, and Pungaliya
+(2016), Dhaliwal, Judd, Serfling, and Shaikh (2016), and Campello and Gao
+(2017)), and distress spillover (Hertzel, Li, Officer, and Rodgers (2008), Boissay
+and Gropp (2013), and Jacobson and von Schedvin (2015)). I contribute to this
+literature stream by showing that institutional investment along the supply chain
+helps strengthen supply chain interactions between the commonly held firms.
+       Empirical analysis examining OIO effects on supply chain issues is limited.
+Dai, Liang, and Ng (2021), who document ESG spillover across the supply chain,
+find stronger subsample results for partners with OIO. The study closest to mine is a
+contemporaneous article in the operations literature by Cheung, Haw, Hu, Swink,
+and Zhang (2020) who show correlations between the presence of OIO and sup-
+pliers’ operating performance. Our articles are very distinct in contribution, as I
+study OIO effects on supply chain partnership survival versus their emphasis on
+supplier profitability, and my analysis employs a quasi-natural experiment to
+provide causal evidence of OIO beyond the correlations they document.3 Other
+articles have considered the effects of OIO in different contexts, particularly in
+acquisitions (Hanson and Lott (1996), Matvos and Ostrovsky (2008), and Harford
+et al. (2011)) and industry competition (e.g., He and Huang (2017), Azar, Schmalz,
+and Tecu (2018), and Azar, Raina, and Schmalz (2021)).4 While the effects of OIO
+on acquisitions and industry competition are predicted to decrease overall welfare
+due to reduced acquisition efficiency and industry collusion, OIO across the supply
+chain is more likely value-enhancing if it alleviates holdup costs. Further, while
+owners may hesitate to take observable actions promoting industry collusion,
+efforts regarding supply chain strength would typically not tempt regulatory
+scrutiny.
+       Other articles suggest innovation spillovers as a possible bright side to OIO:
+Kostovetsky and Marconi (2020) and Geng, Hau, Michaely, and Nguyen (2021)
+find evidence of OIO increasing innovation diffusion and reducing patent litigation
+risk, while Antón et al. (2021) find that the direction of OIO effects on innovation
+depends on industry dynamics. In a somewhat similar vein, my study also suggests
+a (different) arena in which OIO can be welfare-enhancing. Finally, other articles
+have addressed impacts of OIO on firms’ voluntary disclosure policies (Jung
+(2013), Park, Sani, Shroff, and White (2019), and Pawliczek, Skinner, and Zech-
+man (2022)) or abnormal accruals (He et al. (2020)). My article uniquely contrib-
+utes to this broad stream of literature by showing how OIO strengthens and
+lengthens supplier–customer relationships.
+
+    3
+      Specifically, our studies differ along multiple dimensions: Their unit of analysis is the supplier
+rather than the customer–supplier relationship, showing higher average OIO across the supplier’s
+customers correlate with improved gross margins; they do not consider relationship survival and pair-
+level outcomes, the focus of my study. My supplemental analysis supports their finding of OIO and
+higher supplier valuations, but I also show higher customer and pair-level valuations, and increased
+innovation for both firms. Finally, in terms of identification, their results manifest only between firms to
+show a correlation between OIO and supplier margins, while I show a causal effect of OIO on supply
+chain strength with a quasi-natural experiment and tighter time-varying, within-firm variation.
+    4
+      Other articles in this area include Azar (2012), (2017), Cici, Gibson, and Rosenfeld (2015), He,
+Huang, and Zhao (2019), Lopez and Vives (2019), He, Li, and Yeung (2020), Koch, Panayides, and
+Thomas (2021), He, Liang, Wang, and Xia (2024), and Antón, Ederer, Giné, and Schmalz (2023).
+                                                                                          https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                       Freeman 109
+
+II.    Background: Supply Chain Holdup
+      A large literature spanning the economics, finance, and management litera-
+tures has described the dynamics of supply chain partnerships, documented prob-
+lems that can inhibit collaboration, and suggested solutions to create trust and align
+supply chain goals (see, e.g., Williamson (1971), (1979), (1985)). In many cases,
+supply chains can benefit from relationships that go beyond simple arms-length
+transactions due to the possibility of relationship rents created through relationship-
+specific investment (RSI) and information sharing. Such rents could come from, for
+example, suppliers investing in production technology tailored to their customers’
+input needs, customers providing more timely demand forecasts, inventory coor-
+dination, or collaborative innovation. However, because RSI creates assets that are
+inherently more valuable within the relationship than outside of it, and because of
+incomplete contracting in the context of complex assets (e.g., Grossman and Hart
+(1986)), RSI exacerbates the risk of opportunistic behavior – once costly invest-
+ment is made, the firm’s customer (supplier) could exploit its partner’s economic
+dependence on it and demand a greater share of the relationship rents. This risk of
+opportunism by a profit-maximizing counterparty can destroy or preclude effective
+collaboration between partners.
+      However, a “bonding mechanism” can align the economic incentives of a
+customer and supplier, such that the risk of opportunism is alleviated by their shared
+goals. Overlapping ownership could provide such a bonding mechanism due to the
+portfolio-level focus of owners with stakes in both firms. As shown by Hansen and
+Lott (1996), maximizing portfolio value may not always mean maximizing indi-
+vidual firm value, if firms in the portfolio have the ability to influence each other’s
+profits, as in the case of supply chain partners. Thus, while a firm-maximizing
+customer (supplier) may optimally choose to act opportunistically at its supplier’s
+(customer’s) expense, a customer (supplier) whose owners also have stakes in its
+partner should internalize the effects of its actions on that partner. The partner, in
+turn, will be more willing to invest in the relationship, recognizing their aligned
+incentives and lower risk of opportunistic behavior.
+      If overlapping ownership causes firms to internalize the effects of their actions
+on their supply chain partners, then OIO should generate more trust, alleviate
+holdup problems, and result in more collaborative, longer-lasting supply chain
+relationships, particularly in situations with an ex ante higher risk of supply chain
+holdup. The focus of this article is to empirically examine this hypothesis.
+
+
+III.    Data and Methodology
+A.     Data
+     To identify customer–supplier relationships, I use the Compustat Segment
+Customer data. Statement of Financial Accounting Standard (SFAS) No.14 requires
+firms to report all customers comprising 10% or more of their total sales, though
+many firms opt to report significant customers below this threshold as well. The
+Segment database includes the names of customers as well as the supplier’s sales to
+                                                                                                              https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+110 Journal of Financial and Quantitative Analysis
+
+these customers.5 My sample of Segment data runs from 1976 to 2010, and includes
+20,792 supplier–customer pairs. I merge the Segment data with firm-level controls
+from Compustat.
+     Data on institutional ownership are from the Thomson Reuters 13F database.
+This database includes portfolio holdings of institutional investors with over
+100 million in assets under management, including pension funds, endowments,
+insurance companies, bank trusts, mutual fund families, hedge funds, and indepen-
+dent advisors. The Thomson ownership data report institutions’ holdings at the end
+of each calendar quarter. I merge Thomson with CRSP’s quarterly database for
+shares outstanding and stock price data.
+
+B.        Measuring Ownership Overlap
+     To construct measures of OIO, I first identify institutions that hold shares in
+both the supplier and customer at a given point in time (measured quarterly with the
+13F filings). These institutions form the group of overlapping owners. To create
+continuous measures capturing the magnitude of OIO, I use two variables from
+prior literature, which I label OVERLAP_VALUE and OVERLAP_PRODUCT.
+For both measures, a higher value reflects the magnitude of the overlapping
+ownership stakes. The first OIO measure is OVERLAP_VALUE, the proportion
+of value outstanding held by overlapping owners:
+                                          Σk ðV s,k þ V c,k Þ
+(1)                                                           ,
+                                              Vs þVc
+
+across k overlapping owners, where V denotes the value of either the customer or
+supplier, calculated as number of shares × share price. OVERLAP_VALUE is used
+by Antón and Polk (2014), who address how OIO affects the commonality of stock
+returns. My second OIO measure is OVERLAP_PRODUCT, the product of the
+proportion of supplier shares held by overlapping owners and the proportion of
+customer shares held by overlapping owners:
+                                                  
+                                 Σk H c,k Σk H s,k
+(2)                                      ×          ,
+                                   Hc        Hs
+
+across k overlapping institutional owners, where H represents shares of the
+customer or supplier, denoted c and s, respectively. This variable was previously
+used by Hansen and Lott (1996) to measure OIO in the target and acquirer in
+mergers and acquisitions. I calculate OIO measures for each quarter, then take
+averages to create an annual figure. In all specifications, OIO is measured with a
+1-year lag.6
+
+      5
+      In the raw Segment data, customer names are in text format and must be matched to their Compustat
+gvkeys for coding. I thank Edward Fee, Janet Gao, and Yixin Liu for graciously providing matched
+customer–supplier data.
+    6
+      The annual aggregation is based on the supplier’s fiscal year, since the Segment data are reported by
+the supplier. Because 13F ownership data are measured at calendar-year quarters, I aggregate the 4
+quarters immediately prior to the supplier’s fiscal year-end and lag 1 year (e.g., an observation with a
+                                                                                                      https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                 Freeman 111
+
+      One potential concern with these OVERLAP measures is that they could
+spuriously capture the effect of high institutional ownership in the customer–
+supplier pair; that is, a high level of joint institutional ownership in both firms
+may affect the relationship.7 To address this concern, I construct measures of pair-
+level institutional ownership (JOINT_INST_OWN) parallel to the two overlap
+measures, and include as a control the joint ownership measure matching the
+OIO measure construction. Particularly, I construct JOINT_INST_VALUE to par-
+allel OVERLAP_VALUE, as
+                                        Σi ðV s,i þ V c,i Þ
+(3)                                                         ,
+                                            Vs þVc
+
+across i institutional investors, where V denotes the value of either the customer or
+supplier, calculated as number of shares × share price. This measure parallels the
+construction of OVERLAP_VALUE, but is calculated without respect to whether
+the institutional owners hold shares in both customer and supplier. Specifications
+with OVERLAP_VALUE include JOINT_INST_VALUE as a control.
+     Similarly, in specifications using OVERLAP_PRODUCT as the OIO measure,
+I control for JOINT_INST_OWN with JOINT_INST_PRODUCT, calculated as
+                                                     
+                                    Σi H c,i Σi H s,i
+(4)                                         ×          ,
+                                     Hc       Hs
+
+across i institutional investors, where H represents shares outstanding for each firm
+(subscripted with s and c). All specifications with OVERLAP_PRODUCT include
+JOINT_INST_PRODUCT as a control.
+
+C.    Dependent Variable
+
+      Analyzing the effects of OIO on vertical relationships requires a measure
+of relationship strength. I focus on relationship survival as my main variable of
+interest, using an indicator for the customer–supplier relationship ending as my
+main dependent variable. RELATIONSHIP_END captures the longevity of the
+relationship by reflecting relationship duration. To some degree, it also reflects
+the magnitude of the relationship due to the nature of the sample: since the supplier
+only reports sales to major customers, all customer–supplier relationships in the
+sample involve significant transactions. To construct RELATIONSHIP_END,
+I follow Fee et al. (2006), and follow a customer–supplier pair from the first time
+it appears in the sample through the last time it appears, marking this last year as the
+termination of their relationship. Thus, RELATIONSHIP_END is an indicator
+equal to 1 if an observation is the last year a customer–supplier pair appears in
+my sample and 0 if the relationship continues. Also following Fee et al., I mark the
+last year as missing if that year is also the last year either firm appears in Compustat
+or the last year of my sample, since in these cases I can no longer observe whether
+
+supplier fiscal year-end in May 2005 will be matched with lagged OIO measures computed by averaging
+quarterly OIO across June 2003, Sept. 2003, Dec. 2003, and Mar. 2004).
+   7
+     I thank an anonymous reviewer for this observation.
+                                                                                                                 https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+112 Journal of Financial and Quantitative Analysis
+
+the relationship continues. While the indicator does not perfectly capture when
+supplier sales to the customer stop (in some cases, the relationship may no longer be
+reported because the sales concentration percentage has fallen below the reporting
+threshold), it does capture the last year of significant trade between the two firms,
+and is likely highly correlated with the true relationship end, as noted by Fee et al.
+(2006).8
+      An alternative dependent variable could capture relationship magnitude using
+transaction size, which I examine in Table A2 in the Supplementary Material.
+However, I do not rely on this measure heavily to measure relationship strength,
+because transaction size is driven by operating and downstream demand factors
+distinct from the customer–supplier relationship.9
+
+D.       Control Variables and Specifications
+     Throughout my analysis, I include control variables likely to affect relation-
+ship survival. All else equal, we would expect customer–supplier relationships with
+larger transactions to last longer, so I control for the sales dependence
+(SALES_DEP) of the supplier on the customer, measured as sales to the customer
+as a proportion of total supplier sales. When transaction size is not reported in a
+given year but the relationship has not ended, I use the most recently reported sales
+dependence. Trade relationships also likely last longer when alternative vertical
+partners are scarce, so I control for the industry concentration, HHI, of the supplier
+and of the customer, calculated at the 3-digit SIC level. Bargaining power could also
+affect trade relationships, so I control for market share (MKT_SHARE); the log of
+firm assets (SIZE); and profitability (PROFIT) for both firms. I also control for the
+log of relationship tenure (REL_LENGTH). To capture unobservable, time-
+invariant characteristics of the firms and their relationships, linear probability
+model (LPM) specifications use a combination of firm (for both customer and
+supplier) and year or industry × year (for both the customer’s industry and the
+supplier’s industry) fixed effects. Alternatively, in Cox hazards model specifica-
+tions, I allow the baseline hazards to differ across both supplier and customer
+industries. In hazards models, REL_LENGTH is absorbed, due to the nature of
+the specification (Lemeshow, May, and Hosmerow (2011)).
+
+E.       Summary Statistics
+
+     Table 1 reports summary statistics for the variables of interest and the control
+variables, measured at the customer–supplier-year observation level. Firm-level
+characteristics show that customers tend to have higher market share and are larger
+and more profitable than their suppliers, consistent with patterns documented in
+extant studies (e.g., Fee et al. (2006), Banerjee, Dasgupta, and Kim (2008)). This
+reflects the nature of the sample: since suppliers are required to report customers
+     8
+      To the extent that RELATIONSHIP_END captures the end of transactions imperfectly, this mis-
+measurement should only introduce noise and not bias into the analysis.
+    9
+      For example, while the decision by Ford Motor Company’s management to continue purchasing
+seat belts from supplier Autoliv Inc. is likely influenced by the strength of their supply chain relationship,
+the quantity of seat belts purchased will not increase linearly with relationship strength, since consumer
+demand and production needs are primary determinants of quantity.
+                                                                                                                                       https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                                            Freeman 113
+
+
+                                                           TABLE 1
+                                                    Summary Statistics
+
+Customer and supplier firm data in Table 1 come from the Compustat Segment file, and are limited to observations with
+institutional ownership observable for both firms. The sample period is 1981–2009. Observations are at the customer–
+supplier-year level. HHI is the Herfindahl index computed for Compustat firms at the 3-digit SIC code level. MKT_SHARE is
+calculated as the firm’s revenues as a percentage of its industry’s total revenues. SIZE is the log of total book assets in millions
+of dollars. PROFIT is operating income before depreciation and amortization scaled by total assets. RELATIONSHIP_END is
+an indicator for the final year a customer–supplier observation is reported. SALES_DEP is the sales from the supplier to the
+customer as a proportion of total supplier sales. REL_LENGTH is the log number of years since the customer–supplier pair first
+appeared in the Compustat sample. OVERLAP_VALUE is the proportion of total market value held by overlapping 13F
+investors, while OVERLAP_PRODUCT is the product of the proportion of supplier shares held by overlapping shareholders
+and the proportion of customer shares held by overlapping shareholders. JOINT_INST_VALUE is the proportion of combined
+customer and supplier market value held by institutional owners and JOINT_INST_PRODUCT is the product of the supplier’s
+and the customer’s institutional ownership share. Ownership measures are constrained to be between 0 and 1, and variables
+are winsorized at the 1st and 99th percentiles.
+         Variable                 No. of Obs.         Mean           Std. Dev.         25th Pctl.        Median          75th Pctl.
+
+Supplier Characteristics
+HHI                                 29,843            0.159            0.121             0.072            0.123             0.202
+MKT_SHARE                           29,843            0.030            0.082             0.000            0.002             0.013
+SIZE                                29,843            4.798            2.009             3.370            4.647             6.133
+PROFIT                              29,843            0.057            0.209             0.016            0.105             0.169
+Customer Characteristics
+HHI                                 29,843            0.181            0.150             0.086            0.132             0.208
+MKT_SHARE                           29,843            0.205            0.203             0.049            0.150             0.277
+SIZE                                29,843            9.593            1.831             8.556            9.796            10.795
+PROFIT                              29,843            0.142            0.071             0.093            0.143             0.181
+Relationship Characteristics
+RELATIONSHIP_END                    29,843            0.155
+SALES_DEP                           29,843            0.192            0.156             0.101            0.140             0.225
+REL_LENGTH                          29,843            1.426            0.866             0.693            1.609             2.079
+OVERLAP_VALUE                       29,843            0.149            0.154             0.028            0.088             0.239
+OVERLAP_PRODUCT                     29,843            0.060            0.093             0.001            0.013             0.079
+JOINT_INST_VALUE                    29,843            0.531            0.194             0.386            0.531             0.666
+JOINT_INST_PRODUCT                  29,843            0.196            0.204             0.034            0.129             0.293
+
+
+
+
+comprising over 10% of their sales, the sample includes smaller suppliers and larger
+customers. Pair-level characteristics show that the unconditional probability of
+a relationship ending in a given year is 15.5%. A customer accounts for 19.2% of
+the supplier’s sales on average and the average REL_LENGTH (in logs) is 1.43
+(4.16 years). The average level of OVERLAP_VALUE is 0.149, representing 15%
+of value outstanding, compared with 53.1% of value outstanding held by all
+institutional investors (JOINT_INST_VALUE, representing both overlapping
+and non-overlapping ownership). The average level of OVERLAP_PRODUCT
+is 0.060, compared with 0.196 for JOINT_INST_PRODUCT.
+      To put the OIO measures into perspective, Panel A of Table A8 in the
+Supplementary Material reports parallel measures for a set of “pseudo pairs”
+formed by pairing the suppliers (customers) observed in the sample with other
+downstream (upstream) firms in the same 4-digit SIC code and similar in size to the
+observed partners. I then report summary statistics for OIO among these pseudo
+pairs over the tenure of the customer–supplier pair they are matched to. OIO is
+significantly higher in observed customer–supplier pairs than in the pseudo pairs of
+similar firms not in observed vertical relationships.10 If OIO strengthens supply
+
+    10
+    True pairs’ OVERLAP_VALUE is around 0.04–0.05 higher than that of pseudo pairs; OVER-
+LAP_PRODUCT is around 0.03–0.04 higher, depending on the construction of the pseudo pairs.
+                                                                                                                                  https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+114 Journal of Financial and Quantitative Analysis
+
+chain relationships, we might reasonably expect higher OIO between supply chain
+partners than between otherwise similar firms.
+      Strong supply chain relationships could also encourage more OIO. Panel B of
+Table A8 in the Supplementary Material shows in a univariate framework that
+OIO increases significantly after supply chain partners establish a relationship. A
+difference-in-difference (DiD) analysis of changes in OIO around relationship
+formation for true versus pseudo pairs further confirms this (Table A9 in the
+Supplementary Material). Within the baseline sample of existing customer–sup-
+plier relationships, Table A1 in the Supplementary Material shows that OIO is
+positively predicted by REL_LENGTH, JOINT_INST_OWN, and SUPPLIER_-
+SIZE; OIO is negatively predicted by profitability (of either firm).
+
+IV.       Baseline Results
+A.     Univariate Evidence
+
+     Figure 1 shows preliminary graphical evidence of OIO lengthening supply
+chain relationships. The figure plots the probability of a supply chain relationship
+ending for each year of the decade from 2000 to 2009 for three groups based on pair-
+level OIO: “Low,” “Medium,” and “High” OIO (based on within-year terciles). In
+every year, relationships are less likely to end for pairs in the highest tercile of OIO
+versus low OIO, and the probabilities decrease monotonically with OIO. This
+univariate analysis provides an early indication of shared institutional ownership
+enhancing survival rates.
+
+B.     Multivariate Results
+
+     Turning to multivariate analysis, baseline regression results are reported in
+Table 2, showing the association between OIO and relationship survival using
+either OVERLAP_VALUE (columns 1, 2, and 5) or OVERLAP_PRODUCT
+(columns 3, 4, and 6). Columns 1–4 are LPMs and columns 5 and 6 are hazards
+
+                                                        FIGURE 1
+                                    Relationship End by OIO Across Years
+Figure 1 plots the probability of a supply chain relationship ending by year, for 4 OIO buckets: “Zero” (no OIO); “Low” (lowest
+within-year tercile of OIO among pairs with positive overlap); “Medium” (middle within-year tercile of OIO among pairs with
+positive overlap); and “High” (highest within-year tercile of OIO among pairs with positive overlap).
+
+
+                         0.2
+
+
+                        0.15
+
+
+                         0.1
+
+
+                        0.05
+
+
+                           0
+                                 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+                                                 Low              Medium              High
+                                                                                                                                 https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                                       Freeman 115
+
+
+                                                          TABLE 2
+                                                   Baseline Results
+
+Table 2 shows regressions of RELATIONSHIP_END on ownership overlap. Columns 1–4 use linear probability models, while
+columns 5 and 6 are Cox proportional hazards models. Columns 1, 2, and 5 use OVERLAP_VALUE (proportion of total market
+value of the supplier and the customer held by overlapping shareholders) to measure owner overlap, while columns 3, 4, and 6
+use OVERLAP_PRODUCT (proportion of supplier’s shares outstanding held by overlapping shareholders × the proportion of
+customer’s shares outstanding held by overlapping shareholders). JOINT_INST_OWN captures the combined institutional
+ownership of the two firms, calculated parallel to the OVERLAP measures. In columns 1, 2, and 5, JOINT_INST_OWN is the
+proportion of combined customer and supplier market value held by institutional owners, while in columns 3, 4, and 6,
+JOINT_INST_OWN is the product of the supplier’s and the customer’s institutional ownership share. All overlap measures
+are lagged 1 year. *, **, and *** indicate significance at the 10%, 5%, and 1% levels, respectively. t-statistics are shown in
+parentheses, computed from standard errors double-clustered by customer and supplier in the LPM models or clustered by
+customer–supplier pair in hazards specifications.
+                                                 Linear Probability Models                             Hazards Models
+
+                                     1               2               3                4               5                6
+
+OVERLAP                          0.119***        0.111**        0.172**         0.175**        0.481**        0.631*
+                                (2.66)          (2.46)         (2.41)          (2.27)         (2.52)         (1.69)
+REL_LENGTH                         0.034***         0.027***        0.034***        0.027***
+                                  (5.59)           (4.68)          (5.54)          (4.65)
+SALES_DEP                        0.470***       0.471***        0.468***       0.469***        2.674***       2.680***
+                               (14.17)        (13.67)         (14.07)        (13.57)         (16.86)        (16.88)
+JOINT_INST_OWN                     0.089***         0.081***        0.023           0.044            0.426***        0.155
+                                  (3.82)           (3.24)          (0.71)          (1.24)           (4.86)          (1.06)
+SUPPLIER_HHI                     0.049             0.007         0.048            0.007          0.755***       0.791***
+                                (0.95)            (0.10)        (0.91)           (0.11)         (3.90)         (4.05)
+CUSTOMER_HHI                     0.077           0.149          0.066           0.142            0.274           0.384*
+                                (0.97)          (1.54)         (0.83)          (1.49)           (1.41)          (1.96)
+SUPPLIER_MKT_SHARE                 0.003            0.026           0.003           0.027          1.819***       1.832***
+                                  (0.06)           (0.33)          (0.05)          (0.36)         (4.29)         (4.28)
+CUSTOMER_MKT_SHARE               0.019             0.004         0.024           0.003          0.855***       0.981***
+                                (0.26)            (0.05)        (0.33)          (0.04)         (5.52)         (6.42)
+SUPPLIER_SIZE                    0.032***        0.035***       0.033***        0.037***       0.061***       0.073***
+                                (4.80)          (4.94)         (5.15)          (5.35)         (4.42)         (5.93)
+CUSTOMER_SIZE                      0.002            0.002           0.002           0.003          0.006            0.007
+                                  (0.19)           (0.19)          (0.23)          (0.26)         (0.49)           (0.67)
+SUPPLIER_PROFIT                  0.099***        0.096***       0.097***        0.095***       0.759***       0.752***
+                                (4.50)          (4.33)         (4.47)          (4.30)        (12.37)        (12.41)
+CUSTOMER_PROFIT                  0.135**         0.141*         0.122*          0.134*         0.901***       0.840***
+                                (2.05)          (1.95)         (1.89)          (1.86)         (4.44)         (4.17)
+Overlap measure                   Value            Value          Product         Product           Value          Product
+Supplier FEs                       Yes              Yes             Yes             Yes
+Customer FEs                       Yes              Yes             Yes             Yes
+Year FEs                           Yes                              Yes
+Supplier ind. × year FEs                            Yes                              Yes
+Customer ind. × year FEs                            Yes                              Yes
+Supplier ind. strata                                                                                 Yes             Yes
+Customer ind. strata                                                                                 Yes             Yes
+ 2
+R                                  0.189          0.199            0.188           0.199
+No. of obs.                       28,868          28,263           28,868          28,263          29,843           29,843
+
+
+
+models. LPMs include firm fixed effects for both the customer and supplier, as well
+as year or industry × year fixed effects, with standard errors double-clustered by
+customer and supplier. The hazards models are stratified so that the baseline hazards
+differ across supplier industry and customer industry, with standard errors clustered
+at the customer–supplier relationship level. Among control variables, results show
+the relationship is less likely to end when the SALES_DEP of the supplier is high
+and more likely as time within the relationship passes (RELATIONSHIP_END).
+Other control variables generally indicate that relationships last longer when the
+supplier is larger or when either firm is more profitable. Signs on other firm-level
+variables are insignificant or mixed across specifications.
+                                                                                                              https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+116 Journal of Financial and Quantitative Analysis
+
+      Across all specifications in Table 2, the coefficient on OVERLAP is
+negative and significant, indicating higher OIO associates negatively with
+RELATIONSHIP_END. In terms of magnitude, moving from 1-standard-
+deviation below the mean for OVERLAP_VALUE to 1-standard-deviation
+above the mean corresponds to a 3.42% reduction in the probability of the
+relationship ending (based on the column 2 coefficient). This is significant,
+relative to the unconditional probability of the relationship ending of 15.5%.
+Similarly, moving from 1-standard-deviation below the mean for OVERLAP_
+PRODUCT to 1-standard-deviation above the mean corresponds to a 3.26% reduc-
+tion in the probability of the relationship ending (based on the column 4 coefficient).
+Conversely, coefficients on JOINT_INST_ OWN indicate that pair-level institu-
+tional ownership, without respect to overlapping stakes, accelerates the end of
+the relationship (though coefficients are only statistically significant in the value-
+based specifications). This effect is consistent with stronger incentives for
+firm-level (vs. supply chain partnership-level) value maximization from institu-
+tional investors without overlapping stakes. To explore this further, in Table A2
+in the Supplementary Material, I report a falsification test replacing OVERLAP
+with NON_OVERLAP, calculated identically to the OVERLAP measures, but
+across institutional investors not holding overlapping shares in both firms. NON_
+OVERLAP positively predicts RELATIONSHIP_END in all columns, and is
+statistically significant in the value-based specifications. Thus, it is overlapping
+ownership, specifically, that associates with longer-lived relationships, and not
+institutional ownership in general.
+      In Table A3 in the Supplementary Material, I show OIO is also positively
+associated with the sales magnitude of the relationship, using pair-level sales
+scaled by supplier assets as the dependent variable. However, as previously dis-
+cussed, I do not use this dependent variable throughout the article because trans-
+action size is driven by many demand and production factors unrelated to supply
+chain stability.
+
+Baseline Robustness
+     The baseline results in Table 2 confirm a positive association between OIO and
+vertical relationship strength. I perform several robustness tests to alleviate con-
+cerns about a spurious correlation. For brevity, these results are discussed here but
+tabulated in Table A4 in the Supplementary Material. First, I show that, while OIO
+measures in the baseline results are aggregated across all overlapping owners, the
+results are not driven by small, insignificant stakes in the two firms: in columns
+1 and 2, results hold when OIO is computed only across overlapping owners
+holding 1% of each firm’s shares; in columns 3 and 4, results hold when I require
+overlapping owners to hold 1% of each firm and to blockhold (5% stake) at least one
+of the firms;11 and in columns 5 and 6 results persist when OIO is computed only
+across overlapping owners for which the combined stake in the customer and
+
+   11
+      Double blockholdings (5% of each firm’s shares) are rare (under this strict definition, less than 10%
+of my sample has positive OIO). If I require overlapping owners to hold a 5% in both companies,
+coefficients are economically similar to those in the baseline specification, but not statistically
+significant.
+                                                                                                    https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                               Freeman 117
+
+supplier represents at least 1% of their portfolio. Because we would also expect
+longer-term owners to have more influence over supply chain considerations, I
+show in columns 7 and 8 that results hold when I compute OIO only over owners
+that have held both firms at least 5 quarters (the median). Finally, we would not
+expect results to be driven primarily by passive institutions. In columns 9 and
+10, following He et al. (2023), I exclude the “Big 3” (BlackRock, State Street,
+and Vanguard) that comprise the majority of passive index ownership of U.S. firms,
+and obtain results similar to the baseline findings.
+
+C.        Heterogeneity in Supply Chain Holdup
+      Table 2 reports a negative correlation between OIO and the end of a supply
+chain relationship, suggesting OIO strengthens vertical relationships. If so, we
+would expect stronger results in the face of greater supply chain frictions. Holdup
+problems are more severe when the transacted products are more specialized or
+more complex, or when information asymmetry between the partners is more severe
+(Williamson (1979), (1985), Lafontaine and Slade (2007)). I examine cross-
+sectional variation in these three areas in Table 3.
+      First, the potential for holdup problems is greater when transacted products are
+more specialized. Since specialized products are tailored to the customer’s input
+needs, they often require RSI, which increases the risk of opportunistic behavior.
+Following prior literature, I measure product specificity using Rauch’s (1999)
+industry specificity categories (e.g., Giannetti, Burkart, and Ellingsen (2011),
+Campello and Gao (2017), and Dass, Kale, and Nanda (2015)). Panel A of
+Table 3 splits the sample into suppliers selling specialized products (differentiated
+goods or services) and suppliers selling standardized goods, respectively. Compar-
+ing the OVERLAP_VALUE specifications in columns 1 and 2, results are robust in
+the specialized product subsample, but much smaller and statistically insignificant
+in the standardized product subsample, with a statistically significant difference in
+magnitudes. The pattern holds qualitatively in the OVERLAP_PRODUCT speci-
+fications as well, though the differences are not as striking.
+      Holdup costs are greater with complex transacted products, because of
+the difficulties in contractually sharing rents due to incomplete contracting
+(Grossman and Hart (1986)). I follow the literature in examining product com-
+plexity via the supplier’s R&D focus (e.g., Fee et al. (2006), Kale and Shahrur
+(2007), Ellis et al. (2012), Dass et al. (2015), and Favara, Gao, and Giannetti
+(2021)). I split the sample based on the supplier’s firm-level accumulated knowl-
+edge capital, following Favara et al. (2021).12 I examine cross-sectional variation
+in complexity in Panel B of Table 3, splitting the baseline sample into pairs with
+“High” (above industry-median knowledge capital that year) complexity or
+“Low” (below industry–year median) complexity. With high product complexity
+(odd-numbered columns), OIO relates to significantly lower probabilities of the
+relationship ending, but with low product complexity (even-numbered columns),
+the sign of the coefficient switches to positive in one specification and is
+
+     12
+     Following their construction, knowledge capital is calculated from firms’ past R&D expenses,
+applying the perpetual inventory method with a 15% depreciation rate.
+                                                                                                                                   https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+118 Journal of Financial and Quantitative Analysis
+
+
+                                                         TABLE 3
+                                      Cross-Sectional Variation in Holdup Costs
+
+Table 3 displays regressions of RELATIONSHIP_END on OVERLAP, with subsample splits based on product specificity,
+supplier R&D intensity, and information asymmetry. Panel A splits the sample into suppliers providing differentiated goods or
+services (“Special,” odd-numbered columns) vs. suppliers selling standardized goods (“Standard,” even-numbered
+columns), based on Rauch’s (1990) industry classifications. Panel B splits the sample by high vs. low R&D suppliers
+(above vs. below the industry–year median of R&D capital). Panel C splits the sample by pairs that are geographically
+“distant” ( > 250 miles apart for U.S.-based pairs) vs. “close” ( < 250 miles apart). In each panel, OIO is measured by
+OVERLAP_VALUE (proportion of total market value of the supplier and the customer held by overlapping shareholders) in
+columns 1 and 2 and by OVERLAP_PRODUCT (proportion of supplier’s shares outstanding held by overlapping
+shareholders × the proportion of customer’s shares outstanding held by overlapping shareholders) in columns 3 and 4. All
+reported regressions are linear probability models. All overlap measures are lagged 1 year. *, **, and *** indicate significance
+at the 10%, 5%, and 1% levels, respectively. t-statistics are shown in parentheses, computed from standard errors double-
+clustered by customer and supplier.
+Panel A. Product Specificity
+
+    Sample:                Special           Standard         Difference          Special          Standard          Difference
+                                1                2               1–2                 3                 4                3–4
+
+OVERLAP                   0.163***             0.003          0.166*           0.228***          0.217*           0.011
+                         (3.21)               (0.03)         (1.75)           (2.58)            (1.69)           (0.07)
+Overlap measure             Value             Value                               Product           Product
+Controls                     Yes               Yes                                  Yes               Yes
+Supplier FEs                 Yes               Yes                                  Yes               Yes
+Customer FEs                 Yes               Yes                                  Yes               Yes
+Year FEs                     Yes               Yes                                  Yes               Yes
+R2                         0.196              0.178                               0.196              0.177
+No. of obs.                19,174             6,243                               19,174             6,243
+
+Panel B. R&D Intensity
+    Sample:                    High            Low            Difference           High               Low            Difference
+                                1                2               1–2                 3                 4                3–4
+
+OVERLAP                   0.149**            0.002           0.147            0.316***            0.013           0.329**
+                         (2.07)             (0.04)          (1.58)           (2.82)              (0.12)          (2.11)
+Overlap measure             Value             Value                               Product           Product
+Controls                     Yes               Yes                                  Yes               Yes
+Supplier FEs                 Yes               Yes                                  Yes               Yes
+Customer FEs                 Yes               Yes                                  Yes               Yes
+R2                          0.199             0.213                                0.199             0.211
+No. of obs.                 9,424             9,487                                9,424             9,487
+
+Panel C. Geographic Distance
+
+    Sample:                Distant            Close           Difference          Distant            Close           Difference
+                                1                2               1–2                 3                 4                3–4
+
+OVERLAP                   0.112*               0.009          0.122            0.185*            0.102            0.084
+                         (1.84)               (0.11)         (1.14)           (1.92)            (0.65)           (0.48)
+Overlap measure             Value             Value                               Product           Product
+Controls                     Yes               Yes                                  Yes               Yes
+Supplier FEs                 Yes               Yes                                  Yes               Yes
+Customer FEs                 Yes               Yes                                  Yes               Yes
+Year FEs                     Yes               Yes                                  Yes               Yes
+R2                         0.190              0.211                               0.189              0.211
+No. of obs.                15,431             5,681                               15,431             5,681
+
+
+
+
+statistically insignificant. Differences are statistically significant in the OVER-
+LAP_PRODUCT specifications.
+      Finally, holdup problems are also more severe with greater information asym-
+metry between partners. Information sharing is important for RSI, but (absent OIO)
+supply chain partners may be reluctant to share information for fear of the infor-
+mation reaching competitors or of the partner using the information to extract
+relationship rents. The presence of overlapping owners could potentially alleviate
+                                                                                                             https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                      Freeman 119
+
+informational frictions by aligning incentives and alleviating this distrust. Accord-
+ingly, I examine whether the effects of OIO are stronger for customer–supplier pairs
+facing more information asymmetry, using geographic distance as a measure of
+information asymmetry.13 In the context of supply chain relationships, geographic
+distance exacerbates holdup problems (Costello (2013)), while geographic prox-
+imity facilitates innovation spillover (Chu et al. (2019)). Panel C of Table 3 splits the
+baseline sample into pairs that are geographically distant and geographically close.
+“Close” pairs are headquartered in zip codes less than 250 miles apart and “Distant”
+pairs are more than 250 miles apart.14 When supply chain partners are geograph-
+ically distant (odd-numbered columns), OIO retains the negative correlation with
+RELATIONSHIP_END. Conversely, when partners are geographically close
+(even-numbered columns), the coefficients on OIO are small, flip signs, and are
+statistically indistinguishable from 0.
+      Overall, OIO appears to promote longer supply chain relationships in cases
+where transacted products are more specific or complex, or when information
+asymmetry is a larger concern. Thus, in relationships with the potential for signif-
+icant holdup costs, OIO appears to help align incentives of the supply chain
+partners.
+
+
+V.        Addressing Endogeneity: Institution Mergers
+      Baseline results show a strong correlation between OIO and vertical relation-
+ship strength. Further, the cross-sectional results in Section IV.C are consistent with
+a causal story, with stronger results amid greater vertical frictions. While sugges-
+tive, these results cannot confirm a causal relationship. Indeed, the relationship
+between OIO and relationship strength could reflect institutions investing in both
+firms because of their strong relationship, implying reverse causality. To address
+endogeneity concerns, I show evidence of a causal relationship by exploiting a
+natural experiment representing plausibly exogenous shocks to OIO, based around
+institution mergers: when two financial institutions merge for reasons unrelated to
+the firms in their equity portfolios, large OIO holdings are sometimes created. I find
+that when one supply chain partner’s blockholder merges with an institution hold-
+ing a large stake in the other supply chain partner, the two firms are more likely to
+sustain their vertical relationship.
+      The experiment is useful for providing evidence of a causal relationship
+between OIO and relationship duration. Of note, the relevance of the experiment
+centers around events expected to, ex ante, induce large changes in the overlapping
+ownership of one (the merged institution) institutional investor. Large changes
+concentrated in an individual owner’s portfolio may have a larger effect on a supply
+     13
+       Geographic distance has been frequently recognized in finance and accounting literatures as a
+measure of information asymmetry between parties, affecting, for example, monitoring effectiveness
+(e.g., Ayers, Ramalingegowda, and Yeung (2011), Chhaochharia, Kumar, and Niessen-Ruenzi (2012))
+and investing decisions (e.g., Ivković and Weisbenner (2005), Baik, Kang, and Kim (2010)).
+    14
+       I limit this analysis to U.S. headquartered firms. Headquarter zip codes are drawn from Compustat,
+which only reports the current headquarter location. Firms do not relocate headquarters often, but results
+are similar when using a later subsample (starting in 2000), which additionally alleviates concerns about
+relocations.
+                                                                                                                  https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+120 Journal of Financial and Quantitative Analysis
+
+chain relationship due to the greater influence and relevance of a major shareholder
+versus an institution with a smaller overlapping stake. That is, overlapping owners
+holding more shares of both partners likely have greater influence over the com-
+panies and their ownership stakes are likely more prominent and relevant to the
+firms’ management. Thus, while useful in establishing causality, the magnitude
+effects in this setting will not be directly comparable to the effects documented in
+the baseline specifications. If the breadth of overlapping ownership (i.e., the num-
+ber of overlapping owners, regardless of stakes) is more relevant, coefficients in the
+experiment setting may be smaller than in the baseline. If the depth of overlapping
+ownership is important (as is likely), coefficients in the experiment setting may be
+larger than in the baseline specifications.
+
+Institution Mergers
+      In this section, I exploit a shock creating positive changes to OIO resulting
+from institution mergers, following Huang (2013) and He and Huang (2017). I use
+the 49 mergers listed in Appendix A of He and Huang to construct my sample.
+Using the holdings report date just prior to the merger announcement, I merge
+holdings data for both parties to the merger with customers and suppliers in my
+sample whose relationship began prior to the merger. I keep all cases in which one of
+the merging institutions blockholds (>5% stake) either the customer or supplier. A
+customer–supplier pair is then labeled “treated” if the other merger party holds a
+large stake (>1%) in the other trade partner, implying a sizable OIO block after the
+merger. Control observations are cases where one of the firms is blockheld by a
+merger party but the other merger party does not own the other partner (or holds less
+than 1% of its shares outstanding).15 I limit the control group to never-treated
+customer–supplier pairs (e.g., Gormley and Matsa (2011), Baker, Larcker, and
+Wang (2022)) in which both firms have a 1% institutional investor just prior to
+the merger announcement. My sample includes 87 treated merger-pair combina-
+tions, of 1,864 merger-pair combinations (4.7%). I define the “pre” period as the
+3 years prior to the merger announcement year and the “post” period as the 3 years
+after the merger’s completion, excluding the actual merger year from the analysis.
+Importantly, I do not condition treatment status on whether the relationship ended
+before or after the merger; instead, I define treatment without respect to termination
+year, and thus include all pairs existing in the pre-period. Thus, my sample includes
+treated pairs whose relationship ends before the merger, treated pairs whose rela-
+tionship ends after the merger, and control pairs ending either before or after.
+      In Table 4, to illustrate that the merger events lead to increased OIO for treated
+pairs, I report DiD tests showing the effects of the merger on the acquiring insti-
+tution’s overlapping ownership stake. For these tests, OVERLAP_VALUE and
+OVERLAP_PRODUCT are the dependent variables, but defined only on the
+acquirer’s holdings of the two firms.16 All specifications use supplier, customer,
+     15
+       A more draconian treatment definition would be a case of a customer’s 5% blockholder merging
+with a supplier’s 5% blockholder; however, the number of treated pairs fitting this definition is extremely
+limited. Even so, results are qualitatively consistent using this limited treatment group.
+     16
+       This is consistent with He and Huang (2017), who measure consider overlapping ownership across
+all institutional investors in baseline tests, but focus on the acquiring institution to verify the validity of
+                                                                                                                                https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                                      Freeman 121
+
+
+                                                          TABLE 4
+                                        Institution Mergers: Overlap Effects
+
+Table 4 displays difference-in-difference tests around institution mergers. The dependent variable is the overlapping
+ownership stake of the acquirer, OVERLAP_VALUE (columns 1, 3, and 5) or OVERLAP_PRODUCT (columns 2, 4, and 6).
+The sample includes customer–supplier pairs whose relationship began prior to the merger announcement, in which both
+firms had an institutional owner with a 1% minimum stake, and in which one of the firms was blockheld ( ≥ 5% stake) by either
+the acquirer or target before the merger. TREATED is an indicator equal to 1 when one merger participant blockheld one
+partner firm and the other merger participant held a minimum 1% stake in the other partner firm. POST equals 1 in the 3 years
+after the merger, and equals 0 in the 3 years prior to the merger (merger year excluded). Supplier, customer, and event fixed
+effects are included in every specification, year fixed effects in columns 1–4, and industry × year (for both customer and
+supplier industries) in columns 5 and 6. *, **, and *** indicate significance at the 10%, 5%, and 1% levels, respectively.
+t-statistics are shown in parentheses, computed from standard errors clustered by merger event.
+                                                                 Dependent Variable: OIO
+
+                                    1               2                3               4                5               6
+
+TREATED × POST                    0.022***        0.001***         0.022***        0.001***         0.017***        0.001***
+                                 (2.71)          (6.26)           (2.73)          (6.07)           (3.56)          (8.85)
+TREATED                           0.001          0.000            0.001          0.000            0.001          0.000*
+                                 (0.23)         (0.55)           (0.19)         (0.89)           (0.35)         (1.69)
+POST                            0.004***        0.000***       0.004***        0.000***       0.002*          0.000*
+                               (2.80)          (3.02)         (2.90)          (3.04)         (1.98)          (1.81)
+Overlap measure                   Value          Product           Value          Product           Value          Product
+Controls                                                            Yes             Yes              Yes             Yes
+Supplier FEs                       Yes             Yes              Yes             Yes              Yes             Yes
+Customer FEs                       Yes             Yes              Yes             Yes              Yes             Yes
+Year FEs                           Yes             Yes              Yes             Yes
+Event FEs                          Yes             Yes              Yes             Yes              Yes             Yes
+Supplier ind. × year FEs                                                                             Yes             Yes
+Customer ind .× year FEs                                                                             Yes             Yes
+R2                                0.751           0.765            0.752           0.766            0.781           0.785
+No. of obs.                       5,196           5,196            5,196           5,196            4,734           4,734
+
+
+
+
+year, and merger event fixed effects. Columns 1 and 2 report results using only
+POST, TREATED, and TREATED × POST indicators, while columns 3–6 add
+controls. Columns 5 and 6 include industry × year fixed effects for both the
+customer and supplier industry. Across all specifications, the OIO stake increased
+significantly for treated pairs after the merger, compared with control firms. In terms
+of economic magnitude, the combined share of customer and supplier value held by
+the acquirer (OVERLAP_VALUE) increased by around 2 percentage points. This is
+an economically meaningful change in the supply chain pair’s OIO: not only does
+this indicate a sizable increase in OVERLAP_VALUE, but a large change in the
+overlapping stake of a single overlapping owner.17
+      Since the mergers create large upward shifts in OIO exogenous to the supply
+chain partnership, they provide a good setting for testing whether OIO strengthens
+vertical relationships. Table 5 presents DiD tests with RELATIONSHIP_END
+as the dependent variable. Parallel to Table 4, column 1 includes only POST,
+TREATED, and TREATED × POST indicators with supplier, customer, year, and
+event fixed effects; column 2 adds controls, and column 3 adds industry × year fixed
+effects. I control for the level of OVERLAP_VALUE and JOINT_INST_VALUE
+just prior to the merger in columns 2 and 3; results are virtually unchanged if I
+
+the merger experiment. As in their results, I find an increase in the acquirer’s stake that is economically
+large.
+    17
+       Importantly for interpretation of economic magnitudes, this increase in OVERLAP is driven by the
+merger, so the increase in OVERLAP also represents an increase in OIO concentration for the treated
+pairs.
+                                                                                                                                      https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+122 Journal of Financial and Quantitative Analysis
+
+
+                                                            TABLE 5
+                                    Institution Mergers: Relationship Survival
+
+Table 5 shows difference-in-difference around institution mergers. The dependent variable is RELATIONSHIP_END, an
+indicator for the customer–supplier relationship ending in the observation year. The sample includes customer–supplier
+pairs whose relationship began prior to the merger announcement, in which both firms had an institutional owner with a 1%
+minimum stake, and in which one of the firms was blockheld ( ≥ 5% stake) by either the acquirer or target before the merger.
+TREATED is an indicator equal to 1 when one merger participant blockheld one partner firm and the other merger participant
+held a minimum 1% stake in the other partner firm. POST is an indicator for the 3-year period after the merger, equal to 0 in the
+3 years prior to the merger (merger year excluded). Columns 1 and 2 include supplier, customer, event, and year fixed effects,
+while column 3 adds industry × year fixed effects (for both customer and supplier industries). *, **, and *** indicate significance
+at the 10%, 5%, and 1% levels, respectively. t-statistics are shown in parentheses and computed from standard errors
+clustered by merger event.
+                                                                      Dependent Variable: Relationship End
+
+                                                       1                                  2                                 3
+
+TREATED × POST                                     0.066***                          0.055***                         0.070***
+                                                  (3.35)                            (2.34)                           (5.17)
+TREATED                                              0.009                              0.007                             0.052
+                                                    (0.22)                             (0.17)                            (1.02)
+POST                                               0.017                             0.018                            0.012
+                                                  (1.37)                            (1.47)                           (0.27)
+PRE_MERGER_OVERLAP                                                                    0.043                            0.084
+                                                                                     (0.30)                           (0.92)
+Overlap measure                                                                        Value                              Value
+Controls                                                                                Yes                                Yes
+Supplier FEs                                          Yes                               Yes                                Yes
+Customer FEs                                          Yes                               Yes                                Yes
+Year FEs                                              Yes                               Yes
+Event FEs                                             Yes                               Yes                                Yes
+Supplier ind. × year FEs                                                                                                   Yes
+Customer ind .× year FEs                                                                                                   Yes
+R2                                                   0.191                             0.214                              0.246
+No. of obs.                                          5,196                             5,196                              4,734
+
+
+
+instead control for OVERLAP_PRODUCT and JOINT_INST_PRODUCT (see
+Table A6 in the Supplementary Material). Neither the TREATED nor the POST
+coefficients are statistically distinguishable from 0. However, importantly, the
+negative interaction coefficient on TREATED × POST shows that supply chain
+pairs that likely experienced an upward shift in OIO due to the merger are more
+likely to survive afterward.
+      In terms of economic magnitude, treated observations are around 5–7 per-
+centage points more likely to survive than control observations after the merger
+event. As noted in the introduction to this section, the magnitudes of these results
+are not easily comparable to those in the baseline results, since the nature of the
+shock is such that the merger (very likely, ex ante) results in a large overlapping
+ownership stake by one owner (the merged institution) that did not exist prior to the
+merger. A large overlapping ownership stake in a customer and supplier by a
+blockholder would reasonably be expected to have a much larger effect on the
+supply chain relationship than a similar level of OIO distributed among many
+owners. Consistent with this, untabulated results from the full OLS sample reveal
+that the addition of a major overlapping investor with a 1% stake in one firm and a
+5% stake in the other reduces the probability of RELATIONSHIP_END by a similar
+magnitude.18
+
+    18
+      In the full sample, after gaining a major overlapping investor, so defined, a customer–supplier
+pair’s probability of ending the relationship falls by around 4–5 percentage points.
+                                                                                                  https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                    Freeman 123
+
+      Another way to contextualize the magnitude of this finding is to compare it to
+documented effects from previous studies examining other factors affecting rela-
+tionship termination. For example, Fee et al. (2006) report that the existence of a
+corporate equity stake (ever) in a supply chain partner in the past corresponds to
+approximately a 6-percentage-point lower probability of the relationship ending
+(p. 1246); Johnson, Xie, and Yi (2014) report around a 6-percentage-point increase
+in the probability of relationship end in the year after a customer fraud event (p. 17);
+and Cen, Dasgupta, and Sen (2016) find the passage of business combination laws
+in the supplier’s state lowers the probability of termination by 25% (p. 2835). Thus,
+while the effects of a large overlapping ownership block (implied from the institu-
+tion merger) are significant, the magnitude is also comparable to other factors
+affecting relationship termination.
+      He and Huang (2017) use the institution merger setting to show product
+market effects arising from industry cross-ownership. It is possible that shocks to
+industry-level cross-ownership for the supplier or customer could conflate results
+from supply chain effects. To address this, Table A5 in the Supplementary Material
+controls for whether the merger was likely to create large industry blocks in the
+supplier’s or customer’s industry. For that table, I construct measures of industry
+ownership shocks parallel to the criteria used for inclusion in the treated group or
+control group, recording whether a merger participant’s 5% (1%) block in the
+customer or supplier is matched by a same-industry stake meeting the same thresh-
+old in the other merger participant’s holdings. I then interact an indicator for the
+presence of such an industry shock with the POST variable. The interaction is
+statistically insignificant, suggesting industry-level cross ownership does not influ-
+ence supply chain partnership survival in this setting. I also present results removing
+all cases of potentially confounding industry shocks, and results hold. In that table, I
+also consider whether individual firm blockholdings by both merger participants in
+the supplier or customer (individually) might influence survival. I construct indi-
+cators for whether both merger parties held large holdings in the supplier or
+customer (individually) and interact this indicator with the POST variable. A large
+firm-level block increases the probability of RELATIONSHIP_END after the
+merger, but controlling for these effects (or removing cases where firm-level blocks
+by both parties exist) leaves the TREATED × POST coefficient virtually
+unchanged.19
+      I perform various additional robustness tests for Table 5 in Table A6 in the
+Supplementary Material: First, controlling for OVERLAP_PRODUCT instead
+of OVERLAP_VALUE does not alter the results. Second, the coefficient on
+TREATED × POST is virtually unchanged if I relax the restriction for control pairs
+that both firms have a 1% 13F shareholder. Third, I show results hold when I
+exclude years during and after the financial crisis (excluding years after 2006).
+Lewellen and Lowry (2021) highlight the importance of showing robustness to the
+exclusion of mergers around the financial crisis years, so strong results in the
+sample period prior to the crisis are reassuring. Finally, results hold if I include
+pairs whose relationship began after the merger announcement.
+
+
+   19
+        See the Supplementary Material for a more thorough discussion of these results.
+                                                                                                                                    https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+124 Journal of Financial and Quantitative Analysis
+
+                                                         FIGURE 2
+                                           Dynamic DID Around Mergers
+Figure 2 plots the probability of a supply chain relationship ending for treated and control pairs for the institution mergers
+experiment in Table 5. Treated pairs are those in which one merger participant blockheld one partner firm and the other merger
+participant held a minimum 1% stake in the other partner firm; control pairs are pairs in which both firms had a 1% institutional
+shareholder and one of the firms was blockheld ( ≥ 5% stake) by either the acquirer or target before the merger, but the other
+merger participant did not hold 1% or more of the other partner firm. Only pairs whose relationship began prior to the merger
+are included. Control pairs are limited to never-treated pairs.
+
+                                   Probability of Relationship End Around Institutional Mergers
+
+
+                           0.15
+
+
+
+                            0.1
+
+
+
+                           0.05
+
+
+
+                              0
+                                  –4              –2              0                2               4
+                                                                 Year
+                                                          Treated            Control
+
+
+
+      Figure 2 demonstrates graphically parallel trends in the unconditional (uni-
+variate) probability of the relationship ending for treated and control groups prior to
+mergers, followed by a sharp change following the events.20
+      Taken together, results around institution mergers confirm a positive effect of
+OIO on survival rates for customer–supplier relationships. In the next section, I
+show evidence suggesting the longer relationships create value in the supply chain
+relationship.
+
+
+VI.       Effects of OIO on Firm Value
+      Section V provided evidence that the relationship between OIO and supply
+chain relationship survival documented in Section IV is indeed causal. Establishing
+that OIO strengthens supply chain relationships is the core finding of this study, but
+this section also explores whether these longer relationships represent economically
+“good” or “bad” outcomes. The long literature on holdup costs induced by trans-
+action costs and incomplete contracting suggests a bonding mechanism (such as
+OIO) between vertical partners could help align supply chain goals, alleviating
+mistrust and promoting more efficient, mutually beneficial supply chain coopera-
+tion. However, an alternative explanation is that overlapping owners cause non-
+optimal supply chain partnerships to survive longer than is economically beneficial.
+While a thorough welfare analysis of OIO effects on supply chains is beyond the
+scope of this article, two sets of results suggest OIO creates value in the supply chain
+pair and benefits (or at least does not harm) each firm individually.
+      First, I show that supply chains with greater OIO have higher valuations,
+as measured by firm- and pair-level market-to-book ratios (Q). In Table 6, the
+    20
+     Note the event-time averages are noisier for the treated group, which is smaller than the control
+group.
+                                                                                                                                  https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                                        Freeman 125
+
+
+                                                            TABLE 6
+                                                          Value Effects
+
+Table 6 examines the effect of OIO on valuation using market-to-book ratios (Q). Panel A uses the institution merger setting as
+in Table 5 and reports difference-in-difference results around merger events. TREATED is an indicator equal to 1 when one
+merger participant blockheld one partner firm and the other merger participant held a minimum 1% stake in the other partner
+firm. POST equals 1 in the 3 years after the merger, and equals 0 in the 3 years before to the merger (merger year excluded).
+The dependent variable is the supplier’s Q in column 1, customer’s Q in column 2, and combined pair-level Q in column 3.
+Panel B reports OLS regressions from the baseline sample. The dependent variable is supplier’s Q in columns 1 and 2,
+customer’s Q in columns 3 and 4, and combined pair-level Q in columns 5 and 6. t-statistics are shown in parentheses and
+computed from standard errors clustered by merger event in Panel A and by supplier (columns 1 and 2), customer (columns 3
+and 4), or customer and supplier (columns 5 and 6) in Panel B. *, **, and *** indicate significance at the 10%, 5%, and 1%
+levels, respectively.
+Panel A. Valuation Effects in Mergers Setting
+
+                                           Supplier Q                        Customer Q                           Pair-Level Q
+                                                  1                                2                                   3
+
+TREATED × POST                                0.213                              0.232***                            0.218***
+                                             (1.56)                             (3.57)                              (4.62)
+TREATED                                       0.019                            0.151*                              0.106
+                                             (0.10)                           (1.77)                              (0.92)
+POST                                          0.038                            0.047*                              0.066**
+                                             (0.48)                           (1.74)                              (2.57)
+Overlap measure                              Value                               Value                               Value
+Controls                                      Yes                                 Yes                                 Yes
+Supplier FEs                                  Yes                                 Yes                                 Yes
+Customer FEs                                  Yes                                 Yes                                 Yes
+Year FEs                                      Yes                                 Yes                                 Yes
+Event FEs                                     Yes                                 Yes                                 Yes
+R2                                           0.702                               0.834                               0.816
+No. of obs.                                  5,186                               5,192                               5,182
+Panel B. Valuation Effects in Baseline
+
+                                     Supplier Q                         Customer Q                          Pair-Level Q
+
+                               1                      2             3                  4                5                  6
+
+OVERLAP                      0.007              0.102           0.315*            0.088             0.268            0.123
+                            (0.03)             (0.23)          (1.72)            (0.38)            (1.53)           (0.49)
+Overlap measure              Value              Product           Value           Product            Value            Product
+Controls                      Yes                 Yes              Yes              Yes               Yes               Yes
+Supplier FEs                  Yes                 Yes              Yes              Yes               Yes               Yes
+Customer FEs                  Yes                 Yes              Yes              Yes               Yes               Yes
+Year FEs                      Yes                 Yes              Yes              Yes               Yes               Yes
+R2                          0.666                 0.666          0.813             0.813             0.808             0.808
+No. of obs.                 28,723                28,723         28,800            28,800            28,656            28,656
+
+
+
+dependent variable is supplier Q, customer Q, or joint pair-level Q (defined as the
+combined market value of the customer and supplier scaled by their combined book
+values). Panel A focuses on the merger setting, while Panel B uses the baseline OLS
+sample. In Panel A, TREATED × POST is positive across supplier, customer, and
+pair-level Q, and statistically significant for the customer and pair-level specifica-
+tions. For the pair-level result in column 3, treated pairs after the merger have a
+combined Q that is 0.22 higher, representing about 17% of the sample standard
+deviation.
+      To put these magnitudes into context, other studies using this merger setting
+have documented effects of similar magnitude on other firm outcomes. He and
+Huang (2017) study common ownership of product market competitors, and report
+that treated firms’ market share increases by 14%–18% of the sample standard
+deviation relative to control firms (p. 2699); similarly, in their examination of how
+industry common ownership affects earnings guidance, Park et al. (2019) find
+                                                                                                              https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+126 Journal of Financial and Quantitative Analysis
+
+merger-treated firms are 11.5% and 20.3% more likely to report earnings and capital
+expenditures forecasts, respectively. Thus, the magnitude of the value effects in
+Table 6 are similar in magnitude to other outcomes documented in the context of
+overlapping ownership across competing firms. In Panel B, results are weaker, but
+are generally consistent with a non-negative effect of value. Focusing on the better-
+identified merger setting, OIO appears to create value in the supply chain dyad,
+while not destroying value for either firm individually.21
+      Second, I show that supply chains with more OIO issue more patents. In
+Table 7, the dependent variable is the number of patents filed by suppliers, by
+customers, or by both firms combined. Panel A uses the merger setting, while Panel
+B uses the baseline full sample. Patenting data are from the Kogan et al. (2017)
+database. As the dependent variables in this table are count variables, I use Poisson
+regressions.22 In both settings, the number of patents filed by the two firms com-
+bined or by the supplier is positive, and always statistically significant for the
+supplier. For example, in the Panel A merger results, the TREATED × POST
+coefficient on supplier patents indicates around 21% more patents per year for
+treated suppliers after the merger.23 Thus, OIO appears to spur more innovative
+activity, suggesting greater supply chain collaboration between the partners.
+      Overall, OIO appears to not only lengthen supply chain relationships, but to
+simultaneously create value and spur innovation. While these results cannot explic-
+itly show that the observed higher valuations and patents due to OIO occur through
+the simultaneous higher relationship survival rates, they indicate that these longer
+relationships are more likely arising from reduced supply chain frictions than from
+OIO prolonging bad partnerships.
+
+VII.     Additional Analyses: Economic Mechanisms and
+         Relationship Formation
+      After showing positive effects of supply chain OIO on relationship survival,
+valuation, and innovation, a remaining question is what the precise mechanism(s)
+are through which overlapping institutional owners influence supply chain dyads.
+While providing complete, statistical evidence on all potential channels is likely
+impossible, I present tests consistent with one economic mechanism and discuss
+other possible channels. Particularly, I find evidence of supply chain partners
+internalizing the effect of their actions on their partners in terms of trade credit
+provision.
+   21
+      From a theoretical perspective, overlapping owners with equal stakes in both firms should care
+only about joint value maximization of the supply chain partners and be indifferent as to whether both
+or only one firm would accrue benefits in terms of market valuation. Empirically, we might expect
+imbalances in the economic incentives of overlapping owners to play a role in which firm is the
+beneficiary of value improvements. Consistent with this intuition, Table A7 in the Supplementary
+Material presents evidence qualitatively consistent with differential individual firm value effects
+depending on which firm represents the larger component of overlapping owners’ portfolios.
+    22
+      See Cohn, Liu, and Wardlaw (2022) and Correira, Guimarães, and Zylkin (2020) regarding the
+choice of Poisson regressions for count data. For these specifications, which are more restrictive, I relax
+the fixed effects to customer industry and supplier industry, rather than customer firm and supplier firm.
+    23
+      The coefficient of 0.192 indicates e0:192 = 1.212 times more patents for treated suppliers after the
+merger.
+                                                                                                                                    https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                                         Freeman 127
+
+
+                                                               TABLE 7
+                                                        Innovation Effects
+
+Table 7 examines the effect of OIO on patent filing counts, using Poisson fixed effects estimations. Panel A uses the institution
+merger setting as in Table 5, with difference-in-difference results around merger events. TREATED is an indicator equal to 1
+when one merger participant blockheld one partner firm and the other merger participant held a minimum 1% stake in the other
+partner firm. POST equals 1 in the 3 years after the merger, and equals 0 in the 3 years before to the merger (merger year
+excluded). The dependent variable is the count of patents filed by the supplier (column 1), the customer (column 2), and the
+supplier or customer combined (column 3). Panel B uses the baseline sample, where the dependent variable is the count of
+patents filed by the supplier (columns 1 and 2), the customer (columns 3 and 4), and the supplier or customer combined
+(columns 5 and 6). z-Scores are shown in parentheses and computed from standard errors clustered by merger event in Panel
+A and by supplier (columns 1 and 2), customer (columns 3 and 4), or customer and supplier (columns 5 and 6) in Panel B. *, **,
+and *** indicate significance at the 10%, 5%, and 1% levels, respectively.
+Panel A. Patents in Mergers Setting
+
+                                              Supplier                           Customer                            Combined
+                                                    1                                   2                                  3
+
+TREATED × POST                                 0.192*                             0.428                                0.041
+                                              (1.71)                             (1.63)                               (0.18)
+TREATED                                        0.192                              0.132                              0.250
+                                              (1.01)                             (0.51)                             (1.18)
+POST                                           0.184                               0.189***                             0.191***
+                                              (1.51)                              (3.91)                               (4.04)
+Overlap measure                                Value                               Value                                Value
+Controls                                        Yes                                 Yes                                  Yes
+Supplier ind. FEs                               Yes                                 Yes                                  Yes
+Customer ind. FEs                               Yes                                 Yes                                  Yes
+Year FEs                                        Yes                                 Yes                                  Yes
+Event FEs                                       Yes                                 Yes                                  Yes
+No. of obs.                                    4,956                               5,195                                5,289
+Panel B. Patents in Baseline
+
+                                        Supplier                             Customer                           Combined
+
+                                 1                      2             3                     4            5                 6
+
+OVERLAP                      2.902***               2.238***        0.015               0.497          0.279           1.284***
+                            (7.11)                 (3.66)          (0.07)              (1.02)         (1.25)          (2.93)
+Overlap measure                Value               Product          Value           Product            Value            Product
+Controls                        Yes                  Yes             Yes              Yes               Yes               Yes
+Supplier ind. FEs               Yes                  Yes             Yes              Yes               Yes               Yes
+Customer ind. FEs               Yes                  Yes             Yes              Yes               Yes               Yes
+Year FEs                        Yes                  Yes             Yes              Yes               Yes               Yes
+No. of obs.                    29,264               29,264          29,471              29,471        29,753            29,753
+
+
+
+
+A.     Internalization Channel
+
+      The most straightforward way overlapping ownership should influence supply
+chain partners is through an internalization channel. As discussed in Section II,
+while supply chains are frequently afflicted by holdup problems due to the risk of
+partner opportunism, overlapping ownership should cause the firms to internalize
+the effects of their actions on their supply chain partner. In other words, while a
+value-maximizing firm might act opportunistically at its supplier’s (or customer’s)
+expense, overlapping ownership should preclude this behavior, since damaging the
+partner would destroy the firm’s shareholders’ value. Alternatively, while a firm
+may otherwise forego costly investment in a supplier (or customer), overlapping
+ownership could alter incentives toward actions creating joint relationship value.
+      I find evidence of internalization in an area requiring financial cooperation
+between supply chain partners: trade credit. Table 8 examines a supplier’s extension
+of trade credit to the customer. For this analysis, I use a novel dataset of pair-level
+                                                                                                                                    https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+128 Journal of Financial and Quantitative Analysis
+
+
+                                                          TABLE 8
+                                     Trade Credit and Internalizing Distress
+
+Table 8 examines the effect of OIO on trade credit extended to the customer by the supplier. In both panels, the dependent
+variable is pair-level trade credit – the supplier’s outstanding receivable balance with the customer scaled by annual sales to
+the customer. Panel A uses the merger setting in a difference-in-difference framework as in Table 5. Column 2 adds a triple
+difference, by interacting with DISTRESS, an indicator equal to 1 if the customer has a short (below 25th percentile) distance to
+default, following Merton (1974) and Bharath and Shumway (2008). Panel B uses the baseline setting. Columns 3 and 4
+interact OVERLAP with DISTRESS. Columns 1 and 3 use OVERLAP_VALUE (proportion of total market value of the supplier
+and the customer held by overlapping shareholders) to measure owner overlap, while columns 2 and 4 use
+OVERLAP_PRODUCT (proportion of supplier’s shares outstanding held by overlapping shareholders × the proportion of
+customer’s shares outstanding held by overlapping shareholders. All overlap measures are lagged on year. t-statistics are
+shown in parentheses and computed from standard errors clustered by merger event in Panel A and double clustered by
+supplier and customer in Panel B. *, **, and *** indicate significance at the 10%, 5%, and 1% levels, respectively.
+Panel A. Trade Credit in Mergers Setting
+
+                                                                            1                                             2
+
+TREATED × POST                                                          0.043*                                          0.018
+                                                                       (1.96)                                          (0.61)
+TREATED                                                                 0.001                                           0.008
+                                                                       (0.07)                                          (0.51)
+POST                                                                  0.037***                                       0.017
+                                                                     (3.21)                                         (1.41)
+TREATED × POST × DISTRESS                                                                                               0.096***
+                                                                                                                       (4.03)
+TREATED × DISTRESS                                                                                                    0.052***
+                                                                                                                     (2.55)
+POST × DISTRESS                                                                                                       0.029
+                                                                                                                     (1.36)
+DISTRESS                                                                                                                0.010
+                                                                                                                       (0.84)
+Overlap measure                                                           Value                                         Value
+Controls                                                                   Yes                                           Yes
+Supplier FEs                                                               Yes                                           Yes
+Customer FEs                                                               Yes                                           Yes
+Year FEs                                                                   Yes                                           Yes
+Event FEs                                                                  Yes                                           Yes
+R2                                                                        0.519                                         0.530
+No. of obs.                                                                934                                           904
+Panel B. Trade Credit in Baseline Setting
+
+                                             1                        2                          3                            4
+
+OVERLAP                                     0.036                    0.046                      0.059                      0.070
+                                           (1.01)                   (0.56)                     (1.51)                     (0.87)
+OVERLAP × DISTRESS                                                                            0.022                     0.038
+                                                                                             (0.77)                    (0.90)
+DISTRESS                                                                                        0.009                      0.007
+                                                                                               (0.90)                     (0.90)
+Overlap measure                             Value                  Product                     Value                    Product
+Controls                                     Yes                     Yes                        Yes                       Yes
+Supplier FE                                  Yes                     Yes                        Yes                       Yes
+Customer FE                                  Yes                     Yes                        Yes                       Yes
+Year FE                                      Yes                     Yes                        Yes                       Yes
+R2                                          0.420                   0.420                      0.423                     0.423
+No. of obs.                                 2,934                   2,934                      2,790                     2,790
+
+
+
+trade credit extended by suppliers to their customers. These data are hand collected
+from disclosures to financial statements by suppliers, as detailed in Billett,
+Freeman, and Gao (2022), Freeman (2022), and Ersahin, Giannetti, and Huang
+(2021). While this pair-level data is not available for all observations, it facilitates
+much better inference than would be possible using supplier firm-level measures
+that aggregate across all customers. The dependent variable in this table is the ratio
+of the supplier’s accounts receivable balance with the observation customer to the
+                                                                                                            https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                      Freeman 129
+
+annual sales between the firms. Panel A uses the merger setting while Panel B uses
+the baseline OLS setting. Coefficients across all columns in both panels show a
+positive effect of OIO on TRADE_CREDIT, statistically significant in column 1 of
+Panel A, suggesting greater financial cooperation between firms when they share
+more OIO.
+      Next, since trade credit provision is particularly crucial to the customer and
+costly to the supplier when the customer is financially distressed, I examine inter-
+active effects of DISTRESS, an indicator equal to 1 when the customer has a low
+(below 25th percentile) distance to default (Merton (1974), Bharath and Shumway
+(2008)). In column 2 in Panel A of Table 8, I interact DISTRESS with the DiD
+estimators and report a triple-difference. The interacted effect of TREATED ×
+POST × DISTRESS is positive and statistically significant, indicating that, in
+treated pairs after the merger, suppliers are differentially more likely to generously
+extend trade credit to distressed customers. While extending trade credit to a
+customer in financial distress is a risky supply chain decision, it could be optimal
+from a joint value maximization perspective if the liquidity provision supports the
+customer. I also interact DISTRESS with OVERLAP measures in Panel B; while
+the baseline effect of OVERLAP on TRADE_CREDIT remains consistent with
+columns 1 and 2, the interaction term is insignificant. Overall, OIO appears to result
+in greater financial cooperation between firms, with some evidence of stronger
+effects toward distressed customers.
+
+B.        Other Potential Channels
+
+      The tests in Table 8 suggest an internalization channel of OIO. Beyond this
+mechanism, other channels are likely in play as well (albeit challenging to docu-
+ment empirically), including direct engagement,24 board influence, and a “doing
+nothing” mechanism.
+      Direct engagement is inherently difficult to document on a broad scale, but we
+know institutional investors engage directly with portfolio companies, both behind-
+the-scenes and in more public avenues: For example, Dimson et al. (2015) analyze
+private firm engagements of a large institutional investor, reporting dialogues with
+4,186 target companies in 2014 alone, including in-person conversations, telephone
+calls, emails, and letters. In their survey of institutional investors, McCahery et al.
+(2016) find 63% and 45% of respondents engaged in direct discussions with
+management and the board, respectively. Large institutional investors are upfront
+about their engagement with companies in their portfolios.25 Bradley et al. (2022)
+show that non-deal roadshows (NDRs) (organized private meetings between
+management and institutional investors) lead to informed institutional trading.
+Their results suggest information transfer from management to investors, and it
+is extremely plausible that these meetings also facilitate information transfer
+from investors to management. Conferences (e.g., Bushee, Jung, and Miller
+(2011), (2017)) and investor/analyst days (Kirk and Markov (2016)) offer other
+     24
+      See Shekita (2022) for specific anecdotal evidence of OIO influence.
+      For example, Vanguard, coining their funds as often “near-permanent investors” of the firms in
+     25
+
+their portfolios, states that they see engagement with firms as more valuable than voting power (https://
+about.vanguard.com/investment-stewardship/policies-and-guidelines/).
+                                                                                         https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+130 Journal of Financial and Quantitative Analysis
+
+opportunities for face-to-face interaction between management and large investors.
+Zhang (2022) finds evidence of management garnering supply chain information
+from institutional investors at investor conferences. Thus, through these types of
+engagement discussions with management and/or board members, institutional
+investors could discuss supply chain issues with the customer and/or supplier,
+establishing an external tie between the firms and promoting greater incentives to
+collaborate.
+      Overlapping owners could also influence portfolio firms via a board of direc-
+tors seat. Azar (2012) provides evidence that OIO increases the probability of an
+interlocking board. Even absent an interlocking directorship, overlapping owners
+could influence a supply chain relationship through a director on either of the firms’
+boards, providing an opportunity to advise management toward policies beneficial
+to supply chain relationships.
+      Additionally, Schmalz (2018) argues “doing nothing” could be a mechanism
+through which OIO affects firm policies. In the supply chain context, a myopic
+investor could plausibly place pressure on a firm to squeeze its supplier for favor-
+able terms, potentially resulting in short-term gains at the expense of a long-term,
+successful supply chain relationship. Conversely, an owner with a stake in both
+firms may appreciate the supply chain benefits of a more equitable approach.
+
+C.        Relationship Formation
+
+      Evidence throughout this article supports a positive role of overlapping own-
+ership in strengthening supply chain relationships and increasing survival rates. A
+natural follow-up question is whether OIO can also have positive effects on rela-
+tionship formation; that is, are two vertically related firms more likely to commence
+a supply chain relationship when they share the same institutional investors as
+shareholders?26 In the Supplementary Material, I provide evidence qualitatively
+consistent with a positive effect of OIO on the probability of relationship formation
+(Table A10 in the Supplementary Material). While generally parallel effects on
+relationship survival and relationship formation are reassuring, I maintain focus on
+relationship survival for two reasons, one economic and one empirical:
+      First, economically, for overlapping owners to encourage relationship forma-
+tion would likely require more direct intervention than facilitated by the more
+indirect internalization effect. While the presence of institutional owners with a
+stake in both firms could facilitate trust and implicitly encourage collaboration once
+the relationship is formed, establishing a new relationship with a supply chain
+partner is primarily about vertical “goodness of fit” between the firms, which
+institutional investors may not be qualified to ascertain. Second and closely related,
+determining an appropriate group of potential supply chain partners for a “control
+group” is empirically challenging and requires empiricist discretion, since industry
+classifications provide only a broad characterization of input and output. My
+approach, detailed in the Supplementary Material, matches suppliers and customers
+in my sample with pseudo partners in the same downstream industry and of similar
+size as the actual observed partner. Results in Table A10 in the Supplementary
+     26
+      I thank an anonymous reviewer for recommending this analysis.
+                                                                                                        https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                  Freeman 131
+
+Material show that OIO positively predicts relationship formation. Overall, while I
+maintain focus on relationship survival rather than formation in the main tests,
+results support a parallel effect of OIO on relationship formation.
+
+
+VIII.     Conclusion
+      Supply chain partners benefit from collaboration, but without a mechanism to
+bond the customer and supplier, holdup problems often prevent this collaboration
+from taking place. I examine whether OIO can facilitate stronger relationships
+between customers and suppliers. I first document an association between OIO
+and vertical relationship strength, with cross-sectional results consistent with OIO
+alleviating holdup. A natural experiment designed around a series of financial
+institution mergers shows the causal impact of OIO on relationship survival.
+Supporting evidence is most consistent with relationship survival being a net
+positive outcome, since OIO also increases pair-level value and innovation. OIO
+appears to cause firms to internalize the effects of their actions on their supply chain
+partners, leading to greater financial cooperation via trade credit.
+      These results shed light on an ownership mechanism which can help smooth
+supply chain frictions and strengthen ties between customers and suppliers. Prior
+literature has focused on how vertical integration or corporate equity stakes affect
+supply chains (e.g., Coase (1937), Fan and Goyal (2006), Fee et al. (2006), Lafon-
+taine and Slade (2007), and Garfinkel and Hankins (2011)); OIO differs signifi-
+cantly from these direct ownership links because it involves third-party ownership
+rather than a controlling interest of one party by the other.
+      Additionally, this article enhances our understanding of how OIO between
+firms can influence their interactions. Prior literature has addressed OIO primarily
+in the context of industry competition (e.g., He and Huang (2017), Azar et al.
+(2018), (2021), and Koch et al. (2021)), mergers and acquisitions (Hanson and Lott
+(1996), Matvos and Ostrovsky (2008), and Harford et al. (2011)), or firm disclosure
+policies (Jung (2013), Park et al. (2019), and Pawliczek et al. (2022)). My results
+show OIO leads to stronger vertical relationships, and supporting results are con-
+sistent with OIO reducing costly supply chain holdup.
+
+
+Supplementary Material
+     To view supplementary material for this article, please visit http://doi.org/
+10.1017/S0022109023001266.
+
+
+References
+Ahern, K. R., and J. Harford. “The Importance of Industry Links in Merger Waves.” Journal of Finance,
+   69 (2014), 527–576.
+Antón, M.; F. Ederer; M. Giné; and M. C. Schmalz. “Innovation: The Bright Side of Common
+   Ownership?” Working Paper, SSRN 3099578 (2021).
+Antón, M.; F. Ederer; M. Giné; and M. C. Schmalz. “Common Ownership, Competition, and Top
+   Management Incentives.” Journal of Political Economy, 131 (2023), 1294–1355.
+Antón, M., and C. Polk. “Connected Stocks.” Journal of Finance, 69 (2014), 1099–1127.
+                                                                                                           https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+132 Journal of Financial and Quantitative Analysis
+
+Ayers, B. C.; S. Ramalingegowda; and P. E. Yeung. “Hometown Advantage: The Effects of Monitoring
+    Institution Location on Financial Reporting Discretion.” Journal of Accounting and Economics, 52
+    (2011), 41–61.
+Azar, J. “A New Look at Oligopoly: Implicit Collusion.” Doctoral dissertation (2012).
+Azar, J. “Portfolio Diversification, Market Power, and the Theory of the Firm.” Working Paper, SSRN
+    2811221 (2017).
+Azar, J.; S. Raina; and M. C. Schmalz. “Ultimate Ownership and Bank Competition.” Financial
+    Management, 51 (2021), 227–269.
+Azar, J.; M. C. Schmalz; and I. Tecu. “Anti-Competitive Effects of Common Ownership.” Journal of
+    Finance, 73 (2018), 1513–1565.
+Baik, B.; J. K. Kang; and J. M. Kim. “Local Institutional Investors, Information Asymmetries, and
+    Equity Returns.” Journal of Financial Economics, 97 (2010), 81–106.
+Baker, A. C.; D. F. Larcker; and C. C. Wang. “How Much Should We Trust Staggered Difference-in-
+    Differences Estimates?” Journal of Financial Economics, 144 (2022), 370–395.
+Banerjee, S.; S. Dasgupta; and Y. Kim. “Buyer–Supplier Relationships and the Stakeholder Theory of
+    Capital Structure.” Journal of Finance, 63 (2008), 2507–2552.
+Bharath, S. T., and T. Shumway. “Forecasting Default with the Merton Distance to Default Model.”
+    Review of Financial Studies, 21 (2008), 1339–1369.
+Billett, M. T.; R. Elkamhi; and I. V. Floros. “The Influence of Investor Identity and Contract Terms on
+    Firm Value: Evidence from PIPEs.” Journal of Financial Intermediation, 24 (2015), 564–589.
+Billett, M. T.; K. Freeman; and J. Gao. “Access to Debt and the Provision of Trade Credit.” Working
+    Paper, SSRN 3966713 (2022).
+Boissay, F., and R. Gropp. “Trade Credit Defaults and Liquidity Provision by Firms.” Review of Finance,
+    17 (2013), 1853–1894.
+Bradley, D.; R. Jame; and J. Williams. “Non-Deal Roadshows, Informed Trading, and Analyst Conflicts
+    of Interest.” Journal of Finance, 77 (2022), 265–315.
+Brown, D. T.; C. E. Fee; and S. E. Thomas. “Financial Leverage and Bargaining Power with Suppliers:
+    Evidence from Leveraged Buyouts.” Journal of Corporate Finance, 15 (2009), 196–211.
+Bushee, B. J.; M. J. Jung; and G. S. Miller. “Conference Presentations and the Disclosure Milieu.”
+    Journal of Accounting Research, 49 (2011), 1163–1192.
+Bushee, B. J.; M. J. Jung; and G. S. Miller. “Do Investors Benefit from Selective Access to Manage-
+    ment?” Journal of Financial Reporting, 2 (2017), 31–61.
+Campello, M., and J. Gao. “Customer Concentration and Loan Contract Terms.” Journal of Financial
+    Economics, 123 (2017), 108–136.
+Cen, L.; S. Dasgupta; R. Elkamhi; and R. S. Pungaliya. “Reputation and Loan Contract Terms: The Role
+    of Principal Customers.” Review of Finance, 20 (2016), 501–533.
+Cen, L.; S. Dasgupta; and R. Sen. “Discipline or Disruption? Stakeholder Relationships and the Effect of
+    Takeover Threat.” Management Science, 62 (2016), 2820–2841.
+Cheung, Y. L.; I. M. Haw; B. Hu; M. Swink; and W. Zhang. “Common Institutional Investors and
+    Supplier Performance in Supply Chains.” Journal of Operations Management, 66 (2020), 670–696.
+Chhaochharia, V.; A. Kumar; and A. Niessen-Ruenzi. “Local Investors and Corporate Governance.”
+    Journal of Accounting and Economics, 54 (2012), 42–67.
+Chu, Y.; X. Tian; and W. Wang. “Corporate Innovation Along the Supply Chain.” Management Science,
+    65 (2019), 2445–2466.
+Cici, G.; S. Gibson; and C. M. Rosenfeld. “Cross-Company Effects of Common Ownership: Dealings
+    Between Borrowers and Lenders with a Common Blockholder.” Working Paper, SSRN 2705856
+    (2015).
+Coase, R. H. “The Nature of the Firm.” Economica, 4 (1937), 386–405.
+Cohn, J. B.; Z. Liu; and M. I. Wardlaw. “Count (and Count-Like) Data in Finance.” Journal of Financial
+    Economics, 146 (2022), 529–551.
+Correia, S.; P. Guimarães; and T. Zylkin. “Fast Poisson Estimation with High-Dimensional Fixed
+    Effects.” Stata Journal, 20 (2020), 95–115.
+Costello, A. M. “Mitigating Incentive Conflicts in Inter-Firm Relationships: Evidence from Long-Term
+    Supply Contracts.” Journal of Accounting and Economics, 56 (2013), 19–39.
+Dai, R.; H. Liang; and L. Ng. “Socially Responsible Corporate Customers.” Journal of Financial
+    Economics, 142 (2021), 598–626.
+Dass, N.; J. R. Kale; and V. Nanda. “Trade Credit, Relationship-Specific Investment, and Product Market
+    Power.” Review of Finance, 19 (2015), 1867–1923.
+Dasgupta, S.; K. Zhang; and C. Zhu. “Do Social Connections Mitigate Hold-Up and Facilitate Coop-
+    eration? Evidence from Supply Chain Relationships.” Journal of Financial and Quantitative Anal-
+    ysis, 56 (2021), 1679–1712.
+                                                                                                           https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+                                                                                     Freeman 133
+
+Dhaliwal, D.; J. S. Judd; M. Serfling; and S. Shaikh. “Customer Concentration Risk and the Cost of
+    Equity Capital.” Journal of Accounting and Economics, 61 (2016), 23–48.
+Dimson, E.; O. Karakaş; and X. Li. “Active Ownership.” Review of Financial Studies, 28 (2015),
+    3225–3268.
+Dou, Y.; O. K. Hope; and W. B. Thomas. “Relationship-Specificity, Contract Enforceability, and Income
+    Smoothing.” Accounting Review, 88 (2013), 1629–1656.
+Ekern, S., and R. Wilson. “On the Theory of the Firm in an Economy with Incomplete Markets.” Bell
+    Journal of Economics and Management Science, 5 (1974), 171–180.
+Ellis, J. A.; C. E. Fee; and S. E. Thomas. “Proprietary Costs and the Disclosure of Information About
+    Customers.” Journal of Accounting Research, 50 (2012), 685–727.
+Ersahin, N.; M. Giannetti; and R. Huang. “Trade Credit and the Stability of Supply Chains.” Working
+    Paper, SMU Cox School of Business (2021).
+Fan, J. P., and V. K. Goyal. “On the Patterns and Wealth Effects of Vertical Mergers.” Journal of
+    Business, 79 (2006), 877–902.
+Favara, G.; J. Gao; and M. Giannetti. “Uncertainty, Access to Debt, and Firm Precautionary Behavior.”
+    Journal of Financial Economics, 141 (2021), 436–453.
+Fee, C. E.; C. J. Hadlock; and S. Thomas. “Corporate Equity Ownership and the Governance of Product
+    Market Relationships.” Journal of Finance, 61 (2006), 1217–1251.
+Freeman, K. “The Lender’s Lender: Trade Credit and the Monitoring Role of Banks.” Working Paper,
+    SSRN 3235838 (2022).
+Garfinkel, J. A., and K. W. Hankins. “The Role of Risk Management in Mergers and Merger Waves.”
+    Journal of Financial Economics, 101 (2011), 515–532.
+Geng, H.; H. Hau; and S. Lai. “Does Shareholder Overlap Alleviate Patent Holdup?” SFI Working Paper
+    (2021).
+Giannetti, M.; M. Burkart; and T. Ellingsen. “What You Sell Is What You Lend? Explaining Trade Credit
+    Contracts.” Review of Financial Studies, 24 (2011), 1261–1298.
+Gilje, E. P.; T. A. Gormley; and D. Levit. “Who’s Paying Attention? Measuring Common Ownership and
+    its Impact on Managerial Incentives.” Journal of Financial Economics, 137 (2020), 152–178.
+Gormley, T. A., and D. A. Matsa. “Growing Out of Trouble? Corporate Responses to Liability Risk.”
+    Review of Financial Studies, 24 (2011), 2781–2821.
+Grossman, S. J., and O. D. Hart. “The Costs and Benefits of Ownership: ATheory of Vertical and Lateral
+    Integration.” Journal of Political Economy, 94 (1986), 691–719.
+Grossman, S. J., and J. E. Stiglitz. “On Value Maximization and Alternative Objectives of the Firm.”
+    Journal of Finance, 32 (1977), 389–402.
+Hansen, R. G., and J. R. Lott. “Externalities and Corporate Objectives in a World with Diversified
+    Shareholder/Consumers.” Journal of Financial and Quantitative Analysis, 31 (1996), 43–68.
+Harford, J.; D. Jenter; and K. Li. “Institutional Cross-Holdings and Their Effect on Acquisition
+    Decisions.” Journal of Financial Economics, 99 (2011), 27–39.
+Hart, O. D. “On Shareholder Unanimity in Large Stock Market Economies.” Econometrica, 47 (1979),
+    1057–1083.
+He, J., and J. Huang. “Product Market Competition in a World of Cross Ownership: Evidence from
+    Institutional Blockholdings.” Review of Financial Studies 30 (2017), 2674–2718.
+He, J.; L. Li; and P. E. Yeung. “Two Tales of Monitoring: Effects of Institutional Cross-Blockholding on
+    Accruals.” Working Paper, SSRN 3152044 (2020).
+He, J.; H. Xia; Y. Zhao; and L. Zuo. “The Power Behind the Pen: Institutional Investors’ Influence on
+    Media During Corporate Litigation.” Working Paper, SSRN 3584740 (2023).
+He, J.; L. Liang; H. Wang; and H. Xia. “Networking Behind the Scenes: Institutional Cross-Industry
+    Holdings and Information Frictions in Corporate Loans.” Management Science, forthcoming (2024).
+He, J. J.; J. Huang; and S. Zhao. “Internalizing Governance Externalities: The Role of Institutional
+    Cross-Ownership.” Journal of Financial Economics, 134 (2019), 400–418.
+Hertzel, M. G.; Z. Li; M. S. Officer; and K. J. Rodgers. “Inter-Firm Linkages and the Wealth Effects of
+    Financial Distress Along the Supply Chain.” Journal of Financial Economics, 87 (2008), 374–387.
+Huang, J. “Shareholder Coordination, Corporate Governance, and Firm Value.” Working Paper, SSRN
+    2380284 (2013).
+Hui, K. W.; S. Klasa; and P. E. Yeung. “Corporate Suppliers and Customers and Accounting
+    Conservatism.” Journal of Accounting and Economics, 53 (2012), 115–135.
+Ivković, Z., and S. Weisbenner. “Local Does as Local Is: Information Content of the Geography of
+    Individual Investors’ Common Stock Investments.” Journal of Finance, 60 (2005), 267–306.
+Jacobson, T., and E. Von Schedvin. “Trade Credit and the Propagation of Corporate Failure: An
+    Empirical Analysis.” Econometrica, 83 (2015), 1315–1371.
+Johnson, W. C.; W. Xie; and S. Yi. “Corporate Fraud and the Value of Reputations in the Product
+    Market.” Journal of Corporate Finance, 25 (2014), 16–39.
+                                                                                                         https://doi.org/10.1017/S0022109023001266 Published online by Cambridge University Press
+134 Journal of Financial and Quantitative Analysis
+
+Jung, M. J. “Investor Overlap and Diffusion of Disclosure Practices.” Review of Accounting Studies, 18
+   (2013), 167–206.
+Kale, J. R., and H. Shahrur. “Corporate Capital Structure and the Characteristics of Suppliers and
+   Customers.” Journal of Financial Economics, 83 (2007), 321–365.
+Kirk, M. P., and S. Markov. “Come on Over: Analyst/Investor Days as a Disclosure Medium.” Account-
+   ing Review, 91 (2016), 1725–1750.
+Koch, A.; M. Panayides; and S. Thomas. “Common Ownership and Competition in Product Markets.”
+   Journal of Financial Economics, 139 (2021), 109–137.
+Kogan, L.; D. Papanikolaou; A. Seru; and N. Stoffman. “Technological Innovation, Resource Alloca-
+   tion, and Growth.” Quarterly Journal of Economics, 132 (2017), 665–712.
+Kostovetsky, L., and A. Manconi. “Common Institutional Ownership and Diffusion of Innovation.”
+   Working Paper, SSRN 2896372 (2020).
+Lafontaine, F., and M. Slade. “Vertical Integration and Firm Boundaries: The Evidence.” Journal of
+   Economic Literature, 45 (2007), 629–685.
+Lemeshow, S.; S. May; and D. W. Hosmer Jr. Applied Survival Analysis: Regression Modeling of Time-
+   to-Event Data. Hoboken, NJ: John Wiley & Sons (2011).
+Lewellen, K., and M. Lowry. “Does Common Ownership Really Increase Firm Coordination?” Journal
+   of Financial Economics, 141 (2021), 322–344.
+Long, J. “Wealth, Welfare, and the Price of Risk.” Journal of Finance, 27 (1972), 419–433.
+López, Á. L., and X. Vives. “Overlapping Ownership, R&D Spillovers, and Antitrust Policy.” Journal of
+   Political Economy, 127 (2019), 2394–2437.
+Matvos, G., and M. Ostrovsky. “Cross-Ownership, Returns, and Voting in Mergers.” Journal of
+   Financial Economics, 89 (2008), 391–403.
+McCahery, J. A.; Z. Sautner; and L. T. Starks. “Behind the Scenes: The Corporate Governance
+   Preferences of Institutional Investors.” Journal of Finance, 71 (2016), 2905–2932.
+Merton, R. C. “On the Pricing of Corporate Debt: The Risk Structure of Interest Rates.” Journal of
+   Finance, 29 (1974), 449–470.
+Merton, R. C., and M. G. Subrahmanyam. “The Optimality of a Competitive Stock Market.” Bell
+   Journal of Economics and Management Science, 5 (1974), 145–170.
+Nielsen, N. C. “The Investment Decision of the Firm Under Uncertainty and the Allocative Efficiency of
+   Capital Markets.” Journal of Finance, 31 (1976), 587–602.
+Park, J.; J. Sani; N. Shroff; and H. White. “Disclosure Incentives When Competing Firms Have Common
+   Ownership.” Journal of Accounting and Economics, 67 (2019), 387–415.
+Pawliczek, A.; A. N. Skinner; and S. L. Zechman. “Facilitating Tacit Collusion: A New Perspective on
+   Common Ownership and Voluntary Disclosure.” Journal of Accounting Research, 60 (2022),
+   1651–1693.
+Radner, R. “A Note on Unanimity of Stockholders’ Preferences Among Alternative Production Plans: A
+   Reformulation of the Ekern–Wilson Model.” Bell Journal of Economics and Management Science, 5
+   (1974), 181–184.
+Raman, K., and H. Shahrur. “Relationship-Specific Investments and Earnings Management: Evidence
+   on Corporate Suppliers and Customers.” Accounting Review, 83 (2008), 1041–1081.
+Rauch, J. E. “Networks Versus Markets in International Trade.” Journal of International Economics, 48
+   (1999), 7–35.
+Schmalz, M. C. “Common Ownership Concentration and Corporate Conduct.” Annual Review of
+   Financial Economics, 10 (2018), 413–448.
+Shahrur, H. “Industry Structure and Horizontal Takeovers: Analysis of Wealth Effects on Rivals,
+   Suppliers, and Corporate Customers.” Journal of Financial Economics, 76 (2005), 61–98.
+Shekita, N. “Interventions by Common Owners.” Journal of Competition Law & Economics, 18 (2022),
+   99–134.
+Williamson, O. E. “Transaction Cost Economics: The Governance of Contractual Relations.” Journal of
+   Law & Economics, 22 (1979), 233–261.
+Williamson, O. E. The Economic Institutions of Capitalism. New York, NY: Simon and Schuster (1985).
+Williamson, O. E. “The Vertical Integration of Production: Market Failure Considerations.” American
+   Economic Review, 61 (1971), 112–123.
+Zhang, R. X. “Do Managers Learn from Institutional Investors Through Direct Interactions?” Journal of
+   Accounting and Economics, 75 (2022), 101554.
+

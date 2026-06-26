@@ -3,7 +3,7 @@
 
 用法:
     paper-invoke sections.json routing.json -o prompts.json
-    paper-invoke sections.json routing.json --rules-dir /path/to/rules
+    paper-invoke sections.json routing.json --rules-dir /path/to/rules --cache-dir /path/to/cache
 """
 
 import argparse
@@ -123,7 +123,7 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     logger.info("[路径] 读取:  %s 条匹配 → %s", len(raw_data.get("matches", [])), routing_path)
 
     routing = unwrap_routing(raw_data)
-    paper_name = raw_data.get("paper_name", "")
+    paper_name = raw_data.get("paper_name", "") or sections_path.parent.parent.stem
     matches = routing.get("matches", [])
 
     rules_dir = Path(args.rules_dir) if args.rules_dir else None
@@ -164,7 +164,10 @@ def _run(args: argparse.Namespace, config: Config) -> None:
         )
         logger.info("[构建] 完成:  agent=%s, %s 条 prompt", agent, len(agent_prompts))
 
-        new_prompts.extend(agent_prompts)
+        for p in agent_prompts:
+            p["file_path"] = ""
+            p["total_chars"] = len(p["prompt_text"])
+            new_prompts.append(p)
 
     # ══════════════════════════════════════════════════════════
     # 阶段 3：输出

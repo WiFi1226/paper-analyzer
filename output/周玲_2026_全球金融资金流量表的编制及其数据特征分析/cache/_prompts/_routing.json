@@ -1,0 +1,63 @@
+{
+  "matches": [
+    {
+      "title": "前置信息",
+      "agent": "preliminary-info-analyzer",
+      "char_count": 722
+    },
+    {
+      "title": "引言",
+      "agent": "introduction-analyzer",
+      "char_count": 1227
+    },
+    {
+      "title": "一、文献综述",
+      "agent": "literature-review-analyzer",
+      "char_count": 1864
+    },
+    {
+      "title": "二、核算目标表式及现有数据基础",
+      "agent": "descriptive-measurement-analyzer",
+      "char_count": 2558
+    },
+    {
+      "title": "三、全球金融资金流量表的编制",
+      "agent": "descriptive-measurement-analyzer",
+      "char_count": 6584
+    },
+    {
+      "title": "六、结论与政策建议",
+      "agent": "text-results-analyzer",
+      "char_count": 993
+    }
+  ],
+  "unmatched": [
+    {
+      "title": "四、全球金融资金流动现状分析",
+      "char_count": 9708,
+      "reason": "未命中路由表关键词"
+    },
+    {
+      "title": "五、中国内地金融资金流动特征分析",
+      "char_count": 3651,
+      "reason": "未命中路由表关键词"
+    },
+    {
+      "title": "参考文献：",
+      "char_count": 7297,
+      "reason": "未命中路由表关键词"
+    }
+  ],
+  "matched_agents": [
+    "preliminary-info-analyzer",
+    "introduction-analyzer",
+    "literature-review-analyzer",
+    "descriptive-measurement-analyzer",
+    "text-results-analyzer"
+  ],
+  "filter_applied": null,
+  "total_chapters": 9,
+  "total_matches": 6,
+  "report_markdown": "## 章节匹配结果\n\n共识别 **9** 个章节，匹配情况如下：\n\n| # | 章节标题 | 匹配 Agent |\n|---|---------|-----------|\n| 1 | 前置信息 | preliminary-info-analyzer |\n| 2 | 引言 | introduction-analyzer |\n| 3 | 一、文献综述 | literature-review-analyzer |\n| 4 | 二、核算目标表式及现有数据基础 | descriptive-measurement-analyzer |\n| 5 | 三、全球金融资金流量表的编制 | descriptive-measurement-analyzer |\n| 6 | 四、全球金融资金流动现状分析 | [未命中] 跳过 |\n| 7 | 五、中国内地金融资金流动特征分析 | [未命中] 跳过 |\n| 8 | 六、结论与政策建议 | text-results-analyzer |\n| 9 | 参考文献： | [未命中] 跳过 |\n\n> **匹配规则**：章节标题与路由表关键词做模糊匹配。\n> **未命中**的章节将被跳过，不送入任何 agent 分析。\n",
+  "paper_name": "周玲_2026_全球金融资金流量表的编制及其数据特征分析"
+}
