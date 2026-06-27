@@ -88,6 +88,7 @@ def extract_result_from_jsonl(output_file: str, timeout: float = 300) -> str | N
     logger.warning("JSONL %s 中未找到 assistant 输出文本", output_file)
     return None
 
+
 def save_agent_output(
     agent: str,
     paper_name: str,
@@ -130,12 +131,12 @@ def save_agent_output(
         merged = existing + "\n\n---\n\n" + output_text
         output_path.write_text(merged, encoding="utf-8")
         logger.info(
-            "已追加: %s（原 %s 字符 + 新 %s 字符）",
-            filename, len(existing), output_chars,
+            "已追加: %s（原 %s 字符 + 新 %s 字符，约 %s tokens）",
+            filename, len(existing), output_chars, output_chars // 2,
         )
     else:
         output_path.write_text(output_text, encoding="utf-8")
-        logger.info("已保存: %s（%s 字符）", filename, output_chars)
+        logger.info("已保存: %s（%s 字符，约 %s tokens）", filename, output_chars, output_chars // 2)
 
     return output_path
 

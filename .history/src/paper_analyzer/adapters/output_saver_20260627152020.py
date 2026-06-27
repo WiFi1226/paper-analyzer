@@ -130,12 +130,12 @@ def save_agent_output(
         merged = existing + "\n\n---\n\n" + output_text
         output_path.write_text(merged, encoding="utf-8")
         logger.info(
-            "已追加: %s（原 %s 字符 + 新 %s 字符）",
-            filename, len(existing), output_chars,
+            "已追加: %s（原 %s 字符 + 新 %s 字符，约 %s tokens）",
+            filename, len(existing), output_chars, output_chars // 2,
         )
     else:
         output_path.write_text(output_text, encoding="utf-8")
-        logger.info("已保存: %s（%s 字符）", filename, output_chars)
+        logger.info("已保存: %s（%s 字符，约 %s tokens）", filename, output_chars, output_chars // 2)
 
     return output_path
 

@@ -17,6 +17,7 @@ from paper_analyzer._config import Config, set_default_config
 from paper_analyzer.adapters.config_loader import (
     get_agent_section_map, get_agent_canonical_order, unwrap_routing,
 )
+from paper_analyzer.adapters.output_saver import drain_pending
 from paper_analyzer.core.report import (
     assemble_report, validate_sections, build_chapter_structure,
 )
@@ -157,6 +158,11 @@ def _run(args: argparse.Namespace, config: Config) -> None:
         outputs_dir = Path(args.outputs_dir)
     else:
         outputs_dir = config.outputs_dir(paper_name)
+
+    # 先处理异步 agent 的待提取队列（兜底）
+    drained = drain_pending(output_dir=outputs_dir)
+    if drained:
+        logger.info("异步 agent 输出提取完成: %s", ", ".join(drained))
 
     agent_outputs, cleanup_parts = _load_agent_outputs(outputs_dir)
 
