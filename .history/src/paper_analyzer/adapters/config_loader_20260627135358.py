@@ -258,7 +258,7 @@ def _build_en_heading_blacklist(cfg: dict[str, Any]) -> str:
 def _build_en_title_body(cfg: dict[str, Any], blacklist_pattern: str) -> str:
     """从 YAML 构建英文标题正文正则片段。"""
     en = cfg.get("en_headings", {})
-    number_formats = en.get("number_formats", [r"[1-9]\d{0,2}", r"(?:X{1,3}(?:I[XV]|V?I{0,3})?|I[XV]|V?I{0,3})"])
+    number_formats = en.get("number_formats", [r"[1-9]\d{0,2}", r"[IVX]+"])
     body_min = en.get("body_min", 5)
     body_max = en.get("body_max", 80)
     body_start = en.get("body_start", r"[A-Z]")
@@ -299,7 +299,7 @@ def _build_en_headings(cfg: dict[str, Any]) -> tuple[re.Pattern[str], re.Pattern
 def _build_heading_number_regex(cfg: dict[str, Any]) -> re.Pattern[str]:
     """从 YAML 构建标题编号前缀正则（用于续行检测等辅助判断）。"""
     en = cfg.get("en_headings", {})
-    number_formats = en.get("number_formats", [r"[1-9]\d{0,2}", r"(?:X{1,3}(?:I[XV]|V?I{0,3})?|I[XV]|V?I{0,3})"])
+    number_formats = en.get("number_formats", [r"[1-9]\d{0,2}", r"[IVX]+"])
     numbers = "|".join(number_formats)
     return re.compile(r"^(?:" + numbers + r")\.\s+")
 
