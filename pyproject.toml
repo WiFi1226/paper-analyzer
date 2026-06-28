@@ -43,7 +43,6 @@ paper-route = "paper_analyzer.cli.route:main"
 paper-orchestrate = "paper_analyzer.cli.orchestrate:main"
 paper-invoke = "paper_analyzer.cli.invoke:main"
 paper-save-output = "paper_analyzer.cli.save_output:main"
-paper-dispatch = "paper_analyzer.cli.dispatch:main"
 paper-assemble = "paper_analyzer.cli.assemble:main"
 
 [tool.setuptools.packages.find]

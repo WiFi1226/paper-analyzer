@@ -23,6 +23,38 @@ from paper_analyzer.core.prompts import (
 from paper_analyzer.errors import PaperAnalyzerError
 from paper_analyzer.io import write_json
 
+# ── dispatch 清单构造 ──────────────────────────────────────────
+
+
+def build_dispatch_description(agent: str, paper_name: str, chapter_titles: list[str]) -> str:
+    """构造 Agent description 字符串。
+
+    格式: "<agent>: paper=<paper_name> <chapter_titles>"
+    示例: "chart-results-analyzer: paper=Freeman_2025... IV. Baseline Results"
+    """
+    titles_str = ", ".join(chapter_titles)
+    return f"{agent}: paper={paper_name} {titles_str}"
+
+
+def build_dispatch_manifest(
+    prompts: list[dict], paper_name: str,
+) -> dict:
+    """从已完成构造的 prompts 清单生成 dispatch 清单。"""
+    calls = []
+    for idx, entry in enumerate(prompts):
+        description = build_dispatch_description(
+            entry["agent"], paper_name, entry.get("chapter_titles", []),
+        )
+        calls.append({
+            "sequence": idx + 1,
+            "agent": entry["agent"],
+            "description": description,
+            "prompt_index": idx,
+            "chapter_titles": entry.get("chapter_titles", []),
+            "total_chars": entry.get("total_chars", 0),
+        })
+    return {"paper_name": paper_name, "calls": calls, "total_calls": len(calls)}
+
 logger = logging.getLogger(__name__)
 
 
@@ -189,15 +221,27 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     for w in warnings:
         logger.warning("[警告] %s", w)
 
+    # ── 写 _prompts.json ────────────────────────────────────────
     if args.output:
-        write_json(Path(args.output), result)
-        logger.info("已保存: %s（%s 条 prompt）", args.output, len(new_prompts))
-    elif paper_name:
-        output_path = config.prompts_cache_dir(paper_name) / "_prompts.json"
+        output_path = Path(args.output)
         write_json(output_path, result)
         logger.info("已保存: %s（%s 条 prompt）", output_path, len(new_prompts))
+        dispatch_path = output_path.with_name("_dispatch.json")
+    elif paper_name:
+        prompts_dir = config.prompts_cache_dir(paper_name)
+        output_path = prompts_dir / "_prompts.json"
+        write_json(output_path, result)
+        logger.info("已保存: %s（%s 条 prompt）", output_path, len(new_prompts))
+        dispatch_path = prompts_dir / "_dispatch.json"
     else:
         print(json.dumps(result, ensure_ascii=False, indent=2))
+        dispatch_path = None
+
+    # ── 写 _dispatch.json（与 _prompts.json 同目录）────────────
+    if dispatch_path and new_prompts and paper_name:
+        manifest = build_dispatch_manifest(new_prompts, paper_name)
+        write_json(dispatch_path, manifest)
+        logger.info("已保存: %s（%s 条 dispatch）", dispatch_path, len(new_prompts))
 
 
 if __name__ == "__main__":

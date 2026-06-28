@@ -1,6 +1,5 @@
 [console_scripts]
 paper-assemble = paper_analyzer.cli.assemble:main
-paper-dispatch = paper_analyzer.cli.dispatch:main
 paper-extract = paper_analyzer.cli.extract:main
 paper-invoke = paper_analyzer.cli.invoke:main
 paper-orchestrate = paper_analyzer.cli.orchestrate:main

@@ -12,7 +12,6 @@ src/paper_analyzer/adapters/output_saver.py
 src/paper_analyzer/adapters/pdf.py
 src/paper_analyzer/cli/__init__.py
 src/paper_analyzer/cli/assemble.py
-src/paper_analyzer/cli/dispatch.py
 src/paper_analyzer/cli/extract.py
 src/paper_analyzer/cli/invoke.py
 src/paper_analyzer/cli/orchestrate.py
