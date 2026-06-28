@@ -7,6 +7,7 @@
 """
 
 import argparse
+import json
 import logging
 import sys
 from pathlib import Path
@@ -79,19 +80,24 @@ def _run(args: argparse.Namespace) -> None:
         logger.error("未找到任何 agent 输出（目录: %s）", out_dir)
         sys.exit(1)
 
+    missing = set(order) - set(outputs)
+    if missing:
+        logger.warning("以下 agent 无输出文件: %s", ", ".join(sorted(missing)))
+
     # 3. 按 order 排序 + 组装
     sorted_agents = sorted(outputs, key=lambda a: order[a])
 
     lines = [f"# 论文分析报告: {paper_name}", ""]
-
     for agent in sorted_agents:
         lines += [
-            "",                                    # 空行：与上一区段分隔
-            f"## {label.get(agent, agent)}",      # 二级标题
-            "",                                    # 空行：标题与正文分隔
+            "",
+            f"## {label.get(agent, agent)}",
+            f"<!-- agent_section: {agent} -->",
+            "",
             outputs[agent].strip(),
+            "",
+            "---",
         ]
-
     report = "\n".join(lines)
 
     # 4. 输出

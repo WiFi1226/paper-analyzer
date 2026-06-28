@@ -86,10 +86,13 @@ def _run(args: argparse.Namespace) -> None:
 
     for agent in sorted_agents:
         lines += [
-            "",                                    # 空行：与上一区段分隔
-            f"## {label.get(agent, agent)}",      # 二级标题
-            "",                                    # 空行：标题与正文分隔
+            "",
+            f"## {label.get(agent, agent)}",
+            f"<!-- agent_section: {agent} -->",
+            "",
             outputs[agent].strip(),
+            "",
+            "---",
         ]
 
     report = "\n".join(lines)
