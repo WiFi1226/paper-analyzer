@@ -2,7 +2,7 @@
 """paper-save-output: Agent 输出 → 文件（手动/调试用）
 
 串行 hook 方案下，Agent 输出由 PostToolUse Hook 直接调用
-save_agent_output() 保存。此 CLI 仅用于手动调试或外部脚本。
+save_agent_output() 保存。此 CLI 仅用于手动调试或外部脚本。"""
 
 用法:
     paper-save-output <agent_name> <paper_name> <output.md> -o _contents/
