@@ -22,6 +22,8 @@ License-File: LICENSE
 Requires-Dist: pyyaml>=6.0
 Provides-Extra: pdf
 Requires-Dist: pdfminer.six>=20221105; extra == "pdf"
+Provides-Extra: tui
+Requires-Dist: prompt-toolkit>=3.0; extra == "tui"
 Provides-Extra: dev
 Requires-Dist: pytest>=7.0; extra == "dev"
 Dynamic: license-file

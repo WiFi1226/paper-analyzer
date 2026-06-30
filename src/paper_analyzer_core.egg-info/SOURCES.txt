@@ -13,6 +13,7 @@ src/paper_analyzer/adapters/pdf.py
 src/paper_analyzer/cli/__init__.py
 src/paper_analyzer/cli/assemble.py
 src/paper_analyzer/cli/extract.py
+src/paper_analyzer/cli/interactive_routing.py
 src/paper_analyzer/cli/invoke.py
 src/paper_analyzer/cli/orchestrate.py
 src/paper_analyzer/cli/route.py
@@ -20,7 +21,6 @@ src/paper_analyzer/cli/save_output.py
 src/paper_analyzer/cli/split.py
 src/paper_analyzer/core/__init__.py
 src/paper_analyzer/core/prompts.py
-src/paper_analyzer/core/report.py
 src/paper_analyzer/core/route.py
 src/paper_analyzer/core/split.py
 src/paper_analyzer/defaults/agents.yaml
