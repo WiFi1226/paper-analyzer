@@ -142,61 +142,62 @@ def _load_with_fallback(
 def load_settings(config: Config | None = None) -> dict[str, Any]:
     """加载全局设置（阈值 + 输出路径）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
+    优先用户覆盖，否则用包内默认。加载后自动验证。
     """
     if config is None:
         config = get_default_config()
-    return _load_with_fallback(config, "settings.yaml", _validate_settings)
+    data = _load_config_file(config, "settings.yaml")
+    issues = _validate_settings(data)
+    if issues:
+        for issue in issues:
+            logger.warning("配置警告（settings.yaml）: %s", issue)
+    return data
 
 
 def load_routing(config: Config | None = None) -> dict[str, Any]:
     """加载路由配置（别名 + 路由表）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
-    跨文件验证：引用的 agent 必须在 agents.yaml 中注册。
+    优先用户覆盖，否则用包内默认。加载后自动验证跨文件一致性。
     """
     if config is None:
         config = get_default_config()
+    data = _load_config_file(config, "routing.yaml")
     agent_names = get_agent_names(config)
-
-    path = _resolve_config_path(config, "routing.yaml")
-    data = load_yaml(path)
     issues = _validate_routing(data, agent_names)
-
-    if not issues:
-        return data
-
-    if _is_user_override(path, config):
-        logger.warning(
-            "⚠️ 用户自定义配置 routing.yaml 验证失败，已回退到包内默认配置",
-        )
+    if issues:
         for issue in issues:
-            logger.warning("   · %s", issue)
-        return load_yaml(config.defaults_dir / "routing.yaml")
-
-    for issue in issues:
-        logger.warning("配置警告（routing.yaml）: %s", issue)
+            logger.warning("配置警告（routing.yaml）: %s", issue)
     return data
 
 
 def load_agents(config: Config | None = None) -> dict[str, Any]:
     """加载 agent 配置（区段标签 + 排序 + 规则列表）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
+    不可用户覆盖。加载后自动验证。
     """
     if config is None:
         config = get_default_config()
-    return _load_with_fallback(config, "agents.yaml", _validate_agents)
+    data = _load_config_file(config, "agents.yaml")
+    issues = _validate_agents(data)
+    if issues:
+        for issue in issues:
+            logger.warning("配置警告（agents.yaml）: %s", issue)
+    return data
 
 
 def load_split(config: Config | None = None) -> dict[str, Any]:
     """加载章节切分配置（中英文标题匹配规则）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
+    不可用户覆盖。加载后自动验证。
     """
     if config is None:
         config = get_default_config()
-    return _load_with_fallback(config, "split.yaml", _validate_split)
+    data = _load_config_file(config, "split.yaml")
+    issues = _validate_split(data)
+    if issues:
+        for issue in issues:
+            logger.warning("配置警告（split.yaml）: %s", issue)
+    return data
 
 
 # ══════════════════════════════════════════════════════════════════════════

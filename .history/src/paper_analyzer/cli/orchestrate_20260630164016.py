@@ -246,7 +246,6 @@ def main() -> None:
         project_root=args.project_root,
         config_dir=args.config_dir,
         output_dir=args.output_dir,
-        config_files=args.config_file,
     )
     set_default_config(config)
 

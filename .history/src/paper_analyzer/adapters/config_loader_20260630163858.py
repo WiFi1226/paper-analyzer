@@ -57,82 +57,42 @@ def load_yaml(path: Path) -> dict[str, Any]:
 # 配置加载（包内默认 + 用户覆盖）
 # ══════════════════════════════════════════════════════════════════════════
 
-def _resolve_config_path(config: Config, filename: str) -> Path:
-    """解析配置文件路径，优先级：
+def _resolve_config_path(
+    config: Config,
+    filename: str,
+    allow_user_override: bool,
+) -> Path:
+    """解析配置文件路径。
 
-    1. config.config_files 中有文件名匹配的 → 用指定的
-    2. config.user_config_dir 下存在同名文件 → 用用户目录的
-    3. 回退到包内 defaults/
+    Args:
+        config:             Config 对象
+        filename:           配置文件名（如 "settings.yaml"）
+        allow_user_override: 是否允许用户覆盖
+
+    Returns:
+        解析后的配置文件路径
     """
-    # 1. --config-file 指定
-    for f in config.config_files:
-        if f.name == filename:
-            logger.debug("使用指定配置文件: %s", f)
-            return f
-
-    # 2. --config-dir 下有同名文件
-    if config.user_config_dir:
+    if allow_user_override and config.user_config_dir:
         user_path = config.user_config_dir / filename
         if user_path.exists():
             logger.debug("使用用户自定义配置: %s", user_path)
             return user_path
-
-    # 3. 包内默认
     return config.defaults_dir / filename
 
 
-def _is_user_override(path: Path, config: Config) -> bool:
-    """判断配置文件的来源是否为用户自定义（非包内默认）。"""
-    try:
-        path.relative_to(config.defaults_dir)
-        return False
-    except ValueError:
-        return True
+# ── 可覆盖配置映射 ──
+_OVERRIDABLE = {"settings.yaml", "routing.yaml"}
 
 
-def _load_config_file(config: Config, filename: str) -> dict[str, Any]:
-    """加载单个配置文件（自动按优先级查找）。"""
-    path = _resolve_config_path(config, filename)
-    logger.debug("加载配置: %s", path)
-    return load_yaml(path)
-
-
-def _load_with_fallback(
+def _load_config_file(
     config: Config,
     filename: str,
-    validator: Callable[[dict[str, Any]], list[str]],
 ) -> dict[str, Any]:
-    """加载配置文件，用户自定义文件验证失败时自动回退到包内默认。
-
-    Args:
-        config:    Config 对象
-        filename:  配置文件名（如 "settings.yaml"）
-        validator: 验证函数，返回 issue 列表（空列表表示通过）
-
-    Returns:
-        验证后的配置数据。
-    """
-    path = _resolve_config_path(config, filename)
-    data = load_yaml(path)
-    issues = validator(data)
-
-    if not issues:
-        return data
-
-    if _is_user_override(path, config):
-        # ── 用户文件有问题 → 回退 ──
-        logger.warning(
-            "⚠️ 用户自定义配置 %s 验证失败，已回退到包内默认配置",
-            filename,
-        )
-        for issue in issues:
-            logger.warning("   · %s", issue)
-        return load_yaml(config.defaults_dir / filename)
-
-    # ── 包内默认配置有问题 → 只警告 ──
-    for issue in issues:
-        logger.warning("配置警告（%s）: %s", filename, issue)
-    return data
+    """加载单个配置文件（自动判断可否用户覆盖）。"""
+    allow_override = filename in _OVERRIDABLE
+    path = _resolve_config_path(config, filename, allow_override)
+    logger.debug("加载配置: %s (用户覆盖=%s)", path, allow_override)
+    return load_yaml(path)
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -142,61 +102,62 @@ def _load_with_fallback(
 def load_settings(config: Config | None = None) -> dict[str, Any]:
     """加载全局设置（阈值 + 输出路径）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
+    优先用户覆盖，否则用包内默认。加载后自动验证。
     """
     if config is None:
         config = get_default_config()
-    return _load_with_fallback(config, "settings.yaml", _validate_settings)
+    data = _load_config_file(config, "settings.yaml")
+    issues = _validate_settings(data)
+    if issues:
+        for issue in issues:
+            logger.warning("配置警告（settings.yaml）: %s", issue)
+    return data
 
 
 def load_routing(config: Config | None = None) -> dict[str, Any]:
     """加载路由配置（别名 + 路由表）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
-    跨文件验证：引用的 agent 必须在 agents.yaml 中注册。
+    优先用户覆盖，否则用包内默认。加载后自动验证跨文件一致性。
     """
     if config is None:
         config = get_default_config()
+    data = _load_config_file(config, "routing.yaml")
     agent_names = get_agent_names(config)
-
-    path = _resolve_config_path(config, "routing.yaml")
-    data = load_yaml(path)
     issues = _validate_routing(data, agent_names)
-
-    if not issues:
-        return data
-
-    if _is_user_override(path, config):
-        logger.warning(
-            "⚠️ 用户自定义配置 routing.yaml 验证失败，已回退到包内默认配置",
-        )
+    if issues:
         for issue in issues:
-            logger.warning("   · %s", issue)
-        return load_yaml(config.defaults_dir / "routing.yaml")
-
-    for issue in issues:
-        logger.warning("配置警告（routing.yaml）: %s", issue)
+            logger.warning("配置警告（routing.yaml）: %s", issue)
     return data
 
 
 def load_agents(config: Config | None = None) -> dict[str, Any]:
     """加载 agent 配置（区段标签 + 排序 + 规则列表）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
+    不可用户覆盖。加载后自动验证。
     """
     if config is None:
         config = get_default_config()
-    return _load_with_fallback(config, "agents.yaml", _validate_agents)
+    data = _load_config_file(config, "agents.yaml")
+    issues = _validate_agents(data)
+    if issues:
+        for issue in issues:
+            logger.warning("配置警告（agents.yaml）: %s", issue)
+    return data
 
 
 def load_split(config: Config | None = None) -> dict[str, Any]:
     """加载章节切分配置（中英文标题匹配规则）。
 
-    优先用户覆盖，否则用包内默认。用户配置验证失败自动回退。
+    不可用户覆盖。加载后自动验证。
     """
     if config is None:
         config = get_default_config()
-    return _load_with_fallback(config, "split.yaml", _validate_split)
+    data = _load_config_file(config, "split.yaml")
+    issues = _validate_split(data)
+    if issues:
+        for issue in issues:
+            logger.warning("配置警告（split.yaml）: %s", issue)
+    return data
 
 
 # ══════════════════════════════════════════════════════════════════════════
