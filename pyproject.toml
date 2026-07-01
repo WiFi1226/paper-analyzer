@@ -1,10 +1,9 @@
 [build-system]
-requires = ["setuptools>=68.0", "wheel"]
+requires = ["setuptools>=68.0", "wheel", "setuptools-scm>=8.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "paper-analyzer-core"
-version = "0.1.0"
 description = "论文分析工具包：PDF 提取、章节切分、Agent 路由、Prompt 构造、报告组装"
 readme = "README.md"
 license = {text = "MIT"}
@@ -52,4 +51,4 @@ where = ["src"]
 [tool.setuptools.package-data]
 paper_analyzer = ["defaults/*.yaml"]
 
-
+[tool.setuptools_scm]
