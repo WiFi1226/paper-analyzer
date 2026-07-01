@@ -179,6 +179,7 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     if rules:
         logger.info("[规则] 读取: %d 个规则文件，%s 字符 → %s", rules_count, f"{len(rules):,}", rules_dir_path)
 
+
     sections_lookup: dict[str, str] = {sec["title"]: sec.get("content", "") for sec in sections}
 
     agent_titles: dict[str, list[str]] = {}
@@ -192,9 +193,9 @@ def _run(args: argparse.Namespace, config: Config) -> None:
             continue
         for agent_name in agent_list:
             agent_titles.setdefault(agent_name, []).append(m["title"])
-    # logger.info("[分组] 完成: %s 个agent → %s",
-    #     len(agent_titles),
-    #     ", ".join(f"{k}({len(v)})" for k, v in agent_titles.items()))
+    logger.info("[分组] 完成: %s 个 agent → %s",
+        len(agent_titles),
+        ", ".join(f"{k}({len(v)})" for k, v in agent_titles.items()))
 
     agents_cfg = load_agents(config).get("agents", {})
     chapter_list_agents = frozenset(
@@ -226,7 +227,7 @@ def _run(args: argparse.Namespace, config: Config) -> None:
             agent, titles, rules, content_block, footer, get_max_prompt_chars(config), warnings,
             content_block_rebuilder=_rebuild_content,
         )
-        logger.info("[构建] 完成: agent=%s，%d 个章节，%d 条 prompt", agent, len(titles), len(agent_prompts))
+        logger.info("[构建] 完成:  agent=%s，%d 个章节，%d 条 prompt", agent, len(titles), len(agent_prompts))
 
         new_prompts.extend(agent_prompts)
 
@@ -248,13 +249,13 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     if args.output:
         output_path = Path(args.output)
         write_json(output_path, result)
-        logger.info("[PROMPT] 完成: %d 条 prompt → %s", len(new_prompts), output_path)
+        logger.info("[PROMPT] 完成:  %d 条 prompt → %s", len(new_prompts), output_path)
         dispatch_path = output_path.with_name("_dispatch.json")
     elif paper_name:
         prompts_dir = config.prompts_cache_dir(paper_name)
         output_path = prompts_dir / "_prompts.json"
         write_json(output_path, result)
-        logger.info("[PROMPT] 完成: %d 条prompt → %s", len(new_prompts), output_path)
+        logger.info("[PROMPT] 完成:  %d 条 prompt → %s", len(new_prompts), output_path)
         dispatch_path = prompts_dir / "_dispatch.json"
     else:
         print(json.dumps(result, ensure_ascii=False, indent=2))
@@ -264,7 +265,7 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     if dispatch_path and new_prompts and paper_name:
         manifest = _build_dispatch_manifest(new_prompts, paper_name)
         write_json(dispatch_path, manifest)
-        logger.info("[DISPATCH] 完成: %d 条dispatch → %s", len(new_prompts), dispatch_path)
+        logger.info("[DISPATCH] 完成:  %d 条 dispatch → %s", len(new_prompts), dispatch_path)
 
 
 if __name__ == "__main__":

@@ -120,7 +120,7 @@ def _convert_pdf(pdf_path: Path, config: Config) -> Path:
     txt_path.write_text(text, encoding="utf-8")
 
     lines = text.count("\n") + 1
-    logger.info("[TXT] 完成: %s 行，%s 个字符 → %s", f"{lines:,}", f"{len(text):,}", txt_path)
+    logger.info("[TXT] 完成:  %s 行，%s 个字符 → %s", f"{lines:,}", f"{len(text):,}", txt_path)
     return txt_path
 
 

@@ -95,12 +95,12 @@ def _run(args: argparse.Namespace) -> None:
         char_count = len(outputs[agent])
         if agent in parts_info:
             logger.info(
-                "[输出] 读取: agent=%s，%s 字符，%d 个 part → %s",
+                "[输出] 读取:  agent=%s，%s 字符，%d 个 part → %s",
                 agent, f"{char_count:,}", parts_info[agent], out_dir,
             )
         else:
             fp = out_dir / f"{agent}.md"
-            logger.info("[输出] 读取: agent=%s，%s 字符 → %s", agent, f"{char_count:,}", fp)
+            logger.info("[输出] 读取:  agent=%s，%s 字符 → %s", agent, f"{char_count:,}", fp)
 
     # 4. 按 order 排序 + 组装
     lines = [f"# 论文分析报告: {paper_name}", ""]
@@ -122,7 +122,7 @@ def _run(args: argparse.Namespace) -> None:
 
     report_lines = report.count("\n") + 1
     logger.info(
-        "[合并] 完成: %d 个agent，%s 行，%s 字符 → %s",
+        "[合并] 完成:  %d 个 agent，%s 行，%s 字符 → %s",
         len(outputs), f"{report_lines:,}", f"{len(report):,}", out_path,
     )
 

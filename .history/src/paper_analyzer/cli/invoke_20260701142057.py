@@ -177,7 +177,7 @@ def _run(args: argparse.Namespace, config: Config) -> None:
     rules, missing_rules, rules_count, rules_dir_path = _load_rules(rules_dir, config)
     warnings: list[str] = list(missing_rules)
     if rules:
-        logger.info("[规则] 读取: %d 个规则文件，%s 字符 → %s", rules_count, f"{len(rules):,}", rules_dir_path)
+        logger.info("[规则] 读取:  %d 个规则文件，%s 字符 → %s", rules_count, f"{len(rules):,}", rules_dir_path)
 
     sections_lookup: dict[str, str] = {sec["title"]: sec.get("content", "") for sec in sections}
 

@@ -100,7 +100,7 @@ def _run(args: argparse.Namespace) -> None:
             )
         else:
             fp = out_dir / f"{agent}.md"
-            logger.info("[输出] 读取: agent=%s，%s 字符 → %s", agent, f"{char_count:,}", fp)
+            logger.info("[输出] 读取:  agent=%s，%s 字符 → %s", agent, f"{char_count:,}", fp)
 
     # 4. 按 order 排序 + 组装
     lines = [f"# 论文分析报告: {paper_name}", ""]
