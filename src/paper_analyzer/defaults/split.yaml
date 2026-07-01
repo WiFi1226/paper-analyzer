@@ -1,0 +1,75 @@
+# 章节切分配置（中文 / 英文标题匹配规则）
+# 由 core/split.py 模块加载时读取
+
+# 第一个标题前的内容 ≥N 字符才保留为「前置信息」
+min_pre_content_chars: 50
+
+# 英文标题去重：相邻匹配 <N 字符视为同一标题的重复命中
+heading_dedup_distance: 30
+
+# ── 中文标题匹配 ──────────────────────────────────────────────
+cn_headings:
+  # 标题行首最多允许的空白字符数
+  max_leading_whitespace: 88
+  # 标题类型列表（按优先级排列，构建为联合正则）
+  patterns:
+    - type: preface
+      pattern: "引\\s{0,3}言"
+    - type: numbered
+      prefix: "[一二三四五六七八九十]、"
+      body_min: 2
+      body_max: 50
+    - type: conclusion
+      pattern: "结\\s{0,3}论[^\\n]{0,30}"
+    - type: references
+      pattern: "参考文献[^\\n]{0,10}"
+    - type: appendix
+      pattern: "附\\s{0,3}录[^\\n]{0,30}"
+
+# ── 英文标题匹配 ──────────────────────────────────────────────
+en_headings:
+  # 编号格式（联合为 (格式1|格式2|...)\. ）
+  number_formats:
+    - "[1-9]\\d{0,2}"          # 阿拉伯数字 1-999
+    - "(?:X{1,3}(?:I[XV]|V?I{0,3})?|I[XV]|V?I{0,3})"  # 罗马数字 I~XXXIX（严格顺序校验）
+  # 标题正文长度约束
+  body_min: 5
+  body_max: 80
+  # 标题正文必须以大写字母开头
+  body_start: "[A-Z]"
+  # 标题正文允许的字符集
+  body_chars: "[A-Za-z0-9,\\- &:]"
+  # 中继模式：正文中嵌入标题时，标题前至少 N 个空格
+  mid_line_spaces: 4
+  # 负面列表：编号后紧跟这些词开头的句子不是标题（脚注文本干扰）
+  blacklist:
+    - When
+    - If
+    - Because
+    - Although
+    - While
+    - Since
+    - Unless
+    - Whereas
+    - However
+    - Therefore
+    - Thus
+    - Hence
+    - Moreover
+    - Furthermore
+    - Nevertheless
+    - Nonetheless
+    - Accordingly
+    - Consequently
+    - Indeed
+    - Instead
+    - Otherwise
+    - Meanwhile
+    - Specifically
+    - Particularly
+    - Importantly
+    - Notably
+    - Critically
+    - Crucially
+    - Alternatively
+    - Additionally

@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# VS Code 本地文件历史（含所有中间版本代码）
+.history/
+
+# 项目运行时输出
+output/
+
+# 系统
+.DS_Store

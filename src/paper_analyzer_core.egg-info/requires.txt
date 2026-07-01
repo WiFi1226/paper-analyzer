@@ -1,0 +1,10 @@
+pyyaml>=6.0
+
+[dev]
+pytest>=7.0
+
+[pdf]
+pdfminer.six>=20221105
+
+[tui]
+prompt-toolkit>=3.0
