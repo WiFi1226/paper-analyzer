@@ -4,7 +4,7 @@
 工作原理：由 PostToolUse 触发，通过 stdin 接收 tool 调用信息（JSON）。
 串行 subagent 完成后，tool_response 即为分析报告文本，直接保存到 _contents/。
 
-诊断方式：output/<paper>/cache/_contents/hook.log
+诊断方式：output/<paper>/cache/_contents/_hook.log
 """
 
 import json
@@ -76,6 +76,47 @@ def parse_agent_description(description: str) -> dict[str, Any]:
 
     return result
 
+def extract_agent_text(tool_response: Any) -> str:
+    """从 Agent tool_response 中提取输出正文。
+
+    tool_response 可能是：
+      - dict（含 content[].text）
+      - str（JSON 字符串 或 纯文本）
+    """
+    import json
+
+    if isinstance(tool_response, dict):
+        if "content" in tool_response:
+            parts = [
+                item["text"] for item in tool_response["content"]
+                if isinstance(item, dict) and item.get("type") == "text"
+            ]
+            if parts:
+                return "\n".join(parts)
+        try:
+            return json.dumps(tool_response, ensure_ascii=False, indent=2)
+        except Exception:
+            return str(tool_response)
+
+    if not isinstance(tool_response, str):
+        tool_response = str(tool_response)
+
+    try:
+        resp = json.loads(tool_response)
+    except (json.JSONDecodeError, TypeError):
+        return tool_response
+
+    if isinstance(resp, dict) and "content" in resp:
+        parts = [
+            item["text"] for item in resp["content"]
+            if isinstance(item, dict) and item.get("type") == "text"
+        ]
+        if parts:
+            return "\n".join(parts)
+
+    return tool_response
+
+
 # ── 主逻辑 ────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -117,19 +158,20 @@ def _handle() -> None:
     output_dir = config.outputs_dir(paper_name)
     output_dir.mkdir(parents=True, exist_ok=True)
     global _log_file
-    _log_file = output_dir / "hook.log"
+    _log_file = output_dir / "_hook.log"
 
     agent = parsed["agent"] or "unknown"
     _log(f"hook 触发: agent={agent} paper={paper_name}")
 
     # 串行 subagent 完成后，tool_response 即为分析报告文本
-    output_text = data.get("tool_response", "")
-    if not output_text:
+    raw_response = data.get("tool_response", "")
+    if not raw_response:
         _log(f"tool_response 为空，跳过保存")
         print('{"decision":"allow"}')
         return
 
-    _log(f"提取输出: {len(output_text)} 字符")
+    output_text = extract_agent_text(raw_response)
+    _log(f"提取输出: {len(raw_response) if isinstance(raw_response, str) else type(raw_response).__name__} → {len(output_text)} 字符")
 
     output_path = save_agent_output(
         agent=agent,

@@ -25,41 +25,15 @@ paper-orchestrate "<文件路径>" [--section "<关键词>"] [--agent "<agent名
 
 1. **展示匹配报告** 从 Step 0 终端输出中提取 `routing_json_path`（格式：`[匹配] 完成: N 条匹配 → <绝对路径>`），读取该文件，展示一张表格（列：章节 | 匹配结果 | 字数），未匹配的章节在匹配结果列显示「未命中」。如果终端输出中未找到，则回退读取 `output/<论文名>/cache/_prompts/_routing.json`。
 
-2. **每章选择处理方式** 使用 `AskUserQuestion` 处理，每批 ≤4 章（`allowFreeformInput": False`）：
-    - 已匹配章节提供 3 个选项：`不调整` / `调整` / `不分析`
-    - 未匹配章节提供 2 个选项：`分配 agent` / `不分析`
+2. **（按需）手动调整匹配** 如果用户对自动匹配结果不满意，让用户在终端手动执行以下命令启动 TUI 调整：
 
+```bash
+    paper-routing "<routing_json_path>"
+```
 
+- 用户在 TUI 中按 `Enter` 确认写入，或按 `q` 放弃修改。调整完成后回到聊天告知结果。
 
-3. **展示 Agent 类别与待分配章节** 在进入 agent 分配前，先展示：
-    - 可用 Agent 类别（从当前项目的 `output/<论文名>/cache/` 或`--project-root` 参数指向的项目的 `.claude/agents/` 目录读取，按子目录分组）
-    - 标记为「调整」的章节列表及其原匹配 agent（若有）
-
-4. **为标记「调整」的章节分配 agent** 使用 `AskUserQuestion` 处理，每批 ≤4 章，每章 5 个选项（`multiSelect: true`）：
-    - 已匹配章节 4 个选项：
-        - `[已匹配] <agent名>`（保留路由匹配的 agent）
-        - `取消路由`（不分配，跳过此章）
-        - 同类别备选 agent × 2
-    - 未匹配章节 4 个选项：
-        - 同类别备选 agent × 4
-    - `Other`（freeText 中直接输入）作为兜底
-
-
-5. **展示最终分配表** 使用 `AskUserQuestion` 处理（`allowFreeformInput": False`）：
-    - `确认`（保留当前分配）
-    - `重新调整`（回到 2. **每章选择处理方式** 重新选择 agent）
-
-
-
-<!-- TODO 展示格式 label 选项 问题-->
-
-6. **写入** 确认后 写入 `output/<论文名>/cache/_prompts/_routing.json`：
-    - 按用户选择重建 `routing.matches`（每条格式：`{title, agent, char_count}`）
-    - "Other" 手动输入的 agent 照常加入
-    - 勾选"跳过"的章节移入 `unmatched`
-    - 更新 `matched_agents` 去重列表
-    - 保留编排器输出的其他字段不变
-
+3. **展示最终分配表** 读取最新的 `_routing.json`，在对话中渲染一张 Markdown 表格（列：章节 | 匹配结果 | 字数）
 
 ## Step 2：构造 prompt
 
@@ -69,42 +43,33 @@ paper-orchestrate "<文件路径>" [--section "<关键词>"] [--agent "<agent名
 paper-invoke "<sections_path>" "<routing_path>" --rules-dir .claude/rules [--project-root <当前项目根目录>]
 ```
 
-### 3 调用 agent
+## Step 3: 调用 agent
 
-读取 `cache/_prompts/_prompts.json`，按 `prompts` 数组顺序逐个调用 agent。每次调用使用串行 `runSubagent`（一个完成后启动下一个）。
+`paper-invoke`（Step 2）已同时生成 `_prompts.json` 和 `_dispatch.json`。
 
-**Agent description 格式（必须严格遵守，否则 hook 无法捕获输出）**：
+读取 `output/<论文名>/cache/_prompts/_dispatch.json`，按 `calls` 数组的 `sequence` 顺序，逐条调用 Agent 工具。**description 字符串已预置为正确格式，直接使用，不要手动修改。**
 
-```
-"<agent名>: paper=<论文名> <章节标题>"
-```
+| 参数 | 取值 |
+|------|------|
+| `subagent_type` | `call.agent` |
+| `description` | `call.description`（hook 依此捕获输出） |
+| `prompt` | `_prompts.json` 的 `prompts[call.prompt_index].prompt_text` |
 
-- `agent名`：取自当前 prompt 的 `agent` 字段
-- `论文名`：取自 `_prompts.json` 的 `paper_name` 字段
-- `章节标题`：取自当前 prompt 的 `chapter_titles` 字段（多个用逗号拼接）
+每次调用完成一个后再启动下一个（串行）。
 
-示例：`"chart-results-analyzer: paper=Freeman_2025_Overlapping_ownership_along_the_supply_chain IV. Baseline Results"`
+## Step 4: 汇总报告
 
+所有 agent 调用完成后，执行：
 
-
-
-
-
-<!--
-
-## Step 3：汇总
-
-让用户执行：
 ```bash
-paper-assemble "<routing_path>"
+paper-assemble output/<论文名>/cache/_contents/
 ```
 
-展示终端输出日志。 -->
-
+展示终端输出日志。
 
 ## 全局约束
 
-- **严格按 Step 顺序执行**，不要自行增加步骤、读取额外文件、或发起未被要求的询问。
+- **严格按 Step 顺序执行**：不要自行增加步骤、读取额外文件、或发起未被要求的询问。
 - **文件读取白名单**：只允许读取当前 Step 指令中直接出现的文件路径（`output/<论文名>/...` 视为路径模板，允许按实际论文名解析）。Step 指令未写明的文件一律禁止读取。
 - **终端输出即事实**：Step 的输入只能是上一个 Step 的终端输出，或当前 Step 白名单中的文件。禁止因为「终端输出不够详细」而自行补充读取任何文件。
 - **禁止反复读取文件**：除非报错需要排查，禁止为了确认内容而重复读写同一文件。
