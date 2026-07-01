@@ -1,8 +1,0 @@
-max_prompt_chars: 50000
-output_dir: "output"
-
-pdf_search_paths:
-  - "."
-  - "test"
-  - "papers"
-  - "input"
